@@ -1,0 +1,16 @@
+.layout {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+}
+
+.layout-sidebar {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-body {
+    width: calc(100% - 200px);
+    height: 100%;
+}
