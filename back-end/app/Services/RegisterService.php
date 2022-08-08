@@ -2,12 +2,12 @@
 
 Namespace App\Services;
 
-use App\Http\Controllers\ApiTokenController;
+use App\Services\ApiTokenService;
 use App\Models\User;
-use Illuminate\Support\ValidatedInput;
 
 class RegisterService
 {
+
     private array $registerData;
 
     public function __construct(array $registerData)
@@ -25,7 +25,8 @@ class RegisterService
             'password' => bcrypt($this->registerData['password']),
         ]);
         if ($user) {
-            return (new ApiTokenController())->update($user);
+            $tokenResponse = (new ApiTokenService)->update($user);
+            return $tokenResponse;
         }
         return [
             'status' => 'failed to create a user'

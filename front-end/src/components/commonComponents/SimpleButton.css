@@ -1,0 +1,12 @@
+.simple-button {
+    width: fit-content;
+    padding: 0.25rem 1.25rem;
+    background-color: var(--color-main-darkest);
+    color: var(--color-main-ultra-light);
+    font-family: var(--font-family-secondary);
+    font-size: 1rem;
+    border-radius: 5px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    cursor: pointer;
+}

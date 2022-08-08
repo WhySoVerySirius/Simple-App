@@ -1,0 +1,12 @@
+.grid-container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 0.5fr 1fr;
+}
+
+.full-user-info {
+    grid-column: 1/ span 2;
+    display: flex;
+}

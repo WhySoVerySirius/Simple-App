@@ -1,0 +1,18 @@
+.user-profile-image {
+    height: 100%;
+    aspect-ratio: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.user-profile-image>img {}
+
+.user-profile-image-missing {
+    height: 80%;
+    aspect-ratio: 1;
+    background-image: url(../../../missing-image.png);
+    background-size: contain;
+    background-position: center;
+    border-radius: 50%;
+}

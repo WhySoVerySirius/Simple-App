@@ -1,19 +1,21 @@
 <?php
 
 use App\Http\Controllers\AuthController;
-use Illuminate\Http\Request;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UsersController;
+use App\Http\Middleware\ApiTokenCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
 
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('login', [AuthController::class, 'login'])->name('login');
+
+Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {  
+    Route::post('user-info', [UserController::class, 'info']);
+    Route::post('home/project', [HomeController::class,'getProjectsData']);
+    Route::post('home/team', [HomeController::class, 'getTeamData']);
+    Route::post('users', [UsersController::class, 'show']);
+    Route::post('teams', [TeamsController::class, 'show']);
+});

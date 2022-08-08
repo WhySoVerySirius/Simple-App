@@ -80,6 +80,6 @@ class User extends Authenticatable
 
     public function assignedTeam(): BelongsToMany
     {
-        return $this->belongsToMany(Team::class, 'team_members')->using(TeamMember::class);
+        return $this->belongsToMany(Team::class, 'team_members')->using(TeamMember::class)->withPivot('team_position');
     }
 }

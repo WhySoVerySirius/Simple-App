@@ -1,19 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import loginDataReducer from '../features/loginData/loginDataSplice';
-import storage from 'redux-persist/lib/storage';
-import { persistReducer, persistStore } from 'redux-persist';
-
-const persistConfig = {
-    key: 'root',
-    storage,
-}
-
-const persistedReducer = persistReducer(persistConfig, loginDataReducer)
+import loginDataReducer from '../features/loginData/loginDataSlice';
+import homeDataReducer from '../features/homeData/homeDataSlice';
 
 export const store = configureStore({
-    reducer: persistedReducer,
-    // devTools: process.env.NODE_ENV !== 'production',
-    middleware: []
+    reducer: {
+        loginData: loginDataReducer,
+        homeData: homeDataReducer
+    },
 });
-
-export const persistor = persistStore(store);
