@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import FullUserInfo from "./FullUserInfo";
 import HomePageProjects from "./HomePageProjects";
 import HomePageTeams from "./HomePageTeams";
+import HomePageMessages from './HomePageMessages';
 
 export default function HomePage()
 {
@@ -18,11 +19,17 @@ export default function HomePage()
             <div className="full-user-info">
                 <FullUserInfo/>
             </div>
-            <div className="projects">
+            <div className="homepage-projects">
+                <div className="homepage-block-title">Assigned projects:</div>
                 <HomePageProjects/>
             </div>
-            <div className="teams">
+            <div className="homepage-teams">
+                <div className="homepage-block-title">Assigned teams:</div>
                 <HomePageTeams/>
+            </div>
+            <div className="homepage-messages">
+                <div className="homepage-block-title">Unread messages:</div>
+                <HomePageMessages/>
             </div>
         </div>
     </>

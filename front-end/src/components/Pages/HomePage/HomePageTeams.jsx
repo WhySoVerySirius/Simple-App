@@ -5,7 +5,7 @@ import { setTeamData, setTeamDataDownloadDone } from '../../../features/homeData
 
 export default function HomePageTeams()
 {
-    const {data, error, isLoading} = useFetch('http://localhost/api/home/team',{dispatchData:setTeamData,dispatchDone:setTeamDataDownloadDone})
+    const {data, error, isLoading} = useFetch('http://localhost/api/home/team', "POST")
 
     if (isLoading) <h1>Loading...</h1>
     if (error) <h1>Error</h1>

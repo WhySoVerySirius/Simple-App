@@ -4,7 +4,7 @@ import { setProjectData, setProjectDataDownloadDone } from "../../../features/ho
 
 export default function HomePageProjects()
 {
-    const {data, error, isLoading} = useFetch('http://localhost/api/home/project',{dispatchData:setProjectData,dispatchDone:setProjectDataDownloadDone})
+    const {data, error, isLoading} = useFetch('http://localhost/api/home/project', "POST")
 
     if (isLoading) {
         return <h1>Loading...</h1>

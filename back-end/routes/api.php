@@ -2,9 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\TeamsController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\UsersController;
 use App\Http\Middleware\ApiTokenCheckMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -13,9 +13,14 @@ Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('login', [AuthController::class, 'login'])->name('login');
 
 Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {  
-    Route::post('user-info', [UserController::class, 'info']);
+    Route::post('user/info', [UserController::class, 'info']);
+    Route::put('user/{id}/edit', [UserController::class, 'edit']);
+    Route::post('user/show-users', [UserController::class, 'showUsers']);
     Route::post('home/project', [HomeController::class,'getProjectsData']);
     Route::post('home/team', [HomeController::class, 'getTeamData']);
-    Route::post('users', [UsersController::class, 'show']);
+    Route::post('home/messages', [HomeController::class, 'unreadMessages']);
+    Route::post('home/messages/{id}/read', [HomeController::class, 'messageRead']);
+    Route::post('messages/personal/reply', [MessageController::class, 'personalMessageReply']);
     Route::post('teams', [TeamsController::class, 'show']);
+
 });

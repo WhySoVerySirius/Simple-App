@@ -16,7 +16,7 @@ export default function FullUserInfo()
         return (
             <>
                 <div className="user-profile-image">
-                    {image!=='null'?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
+                    {image!==undefined?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
                 </div>
                 <div className="user-data">
                     <div className="data">
@@ -33,7 +33,7 @@ export default function FullUserInfo()
     }
 
     return ReactDOM.createPortal(
-        <Modal type={'userEdit'} clickHandle={setEditData}/>
+        <Modal type={'userEdit'} clickHandle={setEditData} modalState={editData}/>
         ,
         document.querySelector('#modal')
     )

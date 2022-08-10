@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author');
+            $table->foreignId('author')->nullable();
             $table->foreign('author')->references('id')->on('users');
             $table->foreignId('target')->nullable();
             $table->foreign('target')->references('id')->on('users');
@@ -23,6 +23,7 @@ return new class extends Migration
             $table->foreignId('team_id')->nullable()->constrained();
             $table->foreignid('project_id')->nullable()->constrained();
             $table->text('content');
+            $table->boolean('read')->default(false);
             $table->timestamps();
             $table->softDeletes();
         });

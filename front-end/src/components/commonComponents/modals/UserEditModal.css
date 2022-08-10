@@ -20,6 +20,15 @@
     z-index: 5;
 }
 
+.modal-user-edit-form {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .user-profile-image {
     width: 30%;
     height: 30%;

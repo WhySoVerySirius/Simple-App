@@ -1,0 +1,31 @@
+.unread-message-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 5px var(--color-main-dark);
+    width: calc(100% - 2rem);
+    margin: 0.5rem 0;
+    border-radius: 2px;
+    padding: 1rem;
+}
+
+.unread-message-author {
+    text-align: center;
+}
+
+.message-reply-link {
+    cursor: pointer;
+    box-shadow: inset var(--color-main-darkest);
+    color: var(--color-main-darkest);
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
+    width: max-content;
+    margin: 0 -.25rem;
+    padding: 0 .25rem;
+    border-radius: 5px;
+}
+
+.message-reply-link:hover {
+    box-shadow: inset 200px 0 0 0.1px var(--color-main-darkest);
+    color: white;
+}
+
+.message-reply {}

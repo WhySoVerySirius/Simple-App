@@ -8,14 +8,10 @@
     flex-direction: column;
 }
 
-.layout-inner-container {
-    height: 95%;
-    width: 95%;
+.layout-body {
     display: flex;
-    border: 1px solid black;
-    border-radius: 5px;
-    background-color: var(--color-main-ultra-light);
-    flex-direction: column;
+    height: 100%;
+    width: 100%;
 }
 
 .main-login-body {
@@ -34,29 +30,31 @@
     align-items: center;
 }
 
-.layout-body {
-    display: flex;
-    height: 100%;
-}
-
 .layout-sidebar {
     width: max(fit-content, 200px);
     display: flex;
     flex-direction: column;
-    border-right: 1px solid black;
+    background-color: var(--color-main-ultra-light);
+    box-shadow: 0 0 5px var(--color-main-darkest);
 }
 
 .main-body {
     width: calc(100% - 200px);
     height: 100%;
-}
-
-.main-body-inner-container {
-    width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.main-body-inner-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px var(--color-main-darkest);
+    width: 100%;
+    height: 100%;
+    margin: 1rem;
+    padding: 1rem;
 }
 
 #load {

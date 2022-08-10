@@ -12,6 +12,12 @@ class Message extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'author',
+        'message_mode',
+        'content',
+    ];
+
     public function messageAuthor(): BelongsTo
     {
         return $this->belongsTo(User::class, 'author');

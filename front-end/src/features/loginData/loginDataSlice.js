@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setLoginData, setLoginFailed, setLogout, setResponseStatus } from './loginDataActions';
+import { setLoginData, setLoginFailed, setLogout, setResponseStatus, setUpdatedData } from './loginDataActions';
 
 const initialState = {
     data: {},
@@ -19,10 +19,10 @@ export const loginDataReducer = createSlice({
                 state.error = action.payload.error
             })
             .addCase(setLoginData, (state, action) => {
+                state.loginStatus = true;
                 state.data = action.payload.user;
                 state.token = action.payload.token;
-                state.loginStatus = true;
-                sessionStorage.setItem('api_token', action.payload.token)
+                sessionStorage.setItem('api_token', action.payload.token);
             })
             .addCase(setLogout, (state) => {
                 state.data = {};
@@ -32,6 +32,9 @@ export const loginDataReducer = createSlice({
             })
             .addCase(setResponseStatus, (state, action) => {
                 state.responseStatus = action.payload;
+            })
+            .addCase(setUpdatedData, (state, action) => {
+                state.data = action.payload.user;
             })
     },
 });

@@ -1,7 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
 import './Layout.css';
-import PageTitle from "./Pages/PageTitle";
 import { useSelector } from "react-redux";
 import { selectLoginData } from "../features/loginData/loginDataSlice";
 
@@ -11,18 +10,15 @@ export default function Layout({children, type, pages, current})
     if (loginData.responseStatus == 429) {
         return (
             <div className="layout">
-                <div className="layout-inner-container">
-                    <PageTitle title={current}/>
-                    <div className="layout-body">
-                        <div className="layout-sidebar">
-                            <Sidebar pages={pages}/>
-                        </div>
-                        <div className="main-body">
-                            <div className="main-body-inner-container">
-                                <div id="load">
-                                    <h1>Too many requests, please wait a little...</h1>
-                                    <img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif"/>
-                                </div>
+                <div className="layout-body">
+                    <div className="layout-sidebar">
+                        <Sidebar pages={pages}/>
+                    </div>
+                    <div className="main-body">
+                        <div className="main-body-inner-container">
+                            <div id="load">
+                                <h1>Too many requests, please wait a little...</h1>
+                                <img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif"/>
                             </div>
                         </div>
                     </div>
@@ -37,7 +33,6 @@ export default function Layout({children, type, pages, current})
     if (current === 'login') {
         return (
             <div className="layout">
-            <div className="layout-inner-container">
                 <div className="layout-body">
                     <div className="main-login-body">
                         <div className="main-body-login-container">
@@ -46,22 +41,18 @@ export default function Layout({children, type, pages, current})
                     </div>
                 </div>
             </div>
-        </div>
         )
     }
     return type === 'multiple'
     ?(
         <div className="layout">
-            <div className="layout-inner-container">
-                <PageTitle title={current}/>
-                <div className="layout-body">
-                    <div className="layout-sidebar">
-                        <Sidebar pages={pages}/>
-                    </div>
-                    <div className="main-body">
-                        <div className="main-body-inner-container">
-                            {children}
-                        </div>
+            <div className="layout-body">
+                <div className="layout-sidebar">
+                    <Sidebar pages={pages}/>
+                </div>
+                <div className="main-body">
+                    <div className="main-body-inner-container">
+                        {children}
                     </div>
                 </div>
             </div>
@@ -69,8 +60,6 @@ export default function Layout({children, type, pages, current})
     )
     :(
         <div className="layout">
-            <div className="layout-inner-container">
-                <PageTitle title={current}/>
                 <div className="layout-body">
                     <div className="layout-sidebar">
                         <Sidebar pages={pages}/>
@@ -82,6 +71,5 @@ export default function Layout({children, type, pages, current})
                     </div>
                 </div>
             </div>
-        </div>
     )
 }
