@@ -78,6 +78,11 @@ class User extends Authenticatable
         return $this->hasMany(Message::class, 'target', 'id');
     }
 
+    public function managedTeams(): HasMany
+    {
+        return $this->hasMany(Team::class, 'team_leader', 'id');
+    }
+
     public function assignedTeam(): BelongsToMany
     {
         return $this->belongsToMany(Team::class, 'team_members')->using(TeamMember::class)->withPivot('team_position');

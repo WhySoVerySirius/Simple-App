@@ -50,7 +50,7 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 30; $i++) { 
+        for ($i=0; $i < 200; $i++) { 
             $project = Project::create([
                 'title' => Str::random(7),
                 'status' => $this->state[array_rand($this->state)],

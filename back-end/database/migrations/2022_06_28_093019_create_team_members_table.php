@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('team_id')->constrained();
             $table->foreignId('user_id')->constrained();
-            $table->enum('team_position', ['team_leader', 'developer', 'support', 'tester']);
+            $table->enum('team_position', ['developer', 'support', 'tester']);
             $table->timestamps();
             $table->softDeletes();
         });

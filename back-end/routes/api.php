@@ -22,6 +22,7 @@ Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {
     Route::post('home/messages/{id}/read', [HomeController::class, 'messageRead']);
     Route::post('messages/personal/send', [MessageController::class, 'sendPersonalMessage']);
     Route::post('messages/email/send', [MessageController::class, 'sendPersonalEmail']);
-    Route::post('teams', [TeamsController::class, 'show']);
+    Route::post('teams/all', [TeamsController::class, 'show']);
+    Route::post('teams/selected', [TeamsController::class, 'showTeamExpanded']);
 
 });

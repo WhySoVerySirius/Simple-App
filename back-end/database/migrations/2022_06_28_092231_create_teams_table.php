@@ -16,6 +16,8 @@ return new class extends Migration
         Schema::create('teams', function (Blueprint $table) {
             $table->id();
             $table->string('title')->unique();
+            $table->foreignId('team_leader')->nullable();
+            $table->foreign('team_leader')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();
         });

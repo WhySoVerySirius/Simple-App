@@ -22,7 +22,6 @@ export const loginDataReducer = createSlice({
                 state.loginStatus = true;
                 state.data = action.payload.user;
                 state.token = action.payload.token;
-                console.log(action.payload);
                 action.payload.remember ?
                     localStorage.setItem('api_token', action.payload.token) :
                     sessionStorage.setItem('api_token', action.payload.token);

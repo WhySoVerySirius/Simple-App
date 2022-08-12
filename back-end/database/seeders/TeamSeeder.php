@@ -16,7 +16,7 @@ class TeamSeeder extends Seeder
      * @var \Faker\Generator
      */
     protected $faker;
-    private $positions = ['team_leader' => '0', 'developer' => '1', 'support' => '2', 'tester' => '3'];
+    private $positions = ['developer' => '0', 'support' => '1', 'tester' => '2'];
     private $count;
 
     /**
@@ -47,12 +47,12 @@ class TeamSeeder extends Seeder
     public function run()
     {
         $this->count = Team::find(1)?Team::whereRaw('id = (select max(`id`) from teams)')->first()->id: 1;
-        while ($this->count < 10) {
+        while ($this->count < 50) {
             $team = Team::create([
                 'title' => $this->faker->unique()->word(),
             ]);
             $members = [];
-            for ($i=0; $i < random_int(5, 10); $i++) {
+            for ($i=0; $i < random_int(10, 30); $i++) {
                 array_push($members, User::find(random_int(1, 200)));
             }
             array_map(
@@ -61,6 +61,8 @@ class TeamSeeder extends Seeder
                 },
                 $members
             );
+            $team->assignedLeader()->associate(User::find(random_int(1, 200)));
+            $team->save();
             $this->count = Team::whereRaw('id = (select max(`id`) from teams)')->get()[0]->id;
         }
     }

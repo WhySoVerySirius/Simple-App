@@ -1,0 +1,29 @@
+.teams-grid-container {
+    height: calc(100% - 4rem);
+    width: calc(100% - 4rem);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 25% 25% 25% 25%;
+    font-family: var(--font-family-main);
+    padding: 2rem 0;
+}
+
+.top-right {
+    grid-column: 2/span 3;
+}
+
+.span-row {
+    grid-column: 1/span 4;
+}
+
+.span-half-row {
+    grid-area: span 1/ span 2;
+}
+
+.span-two-columns {
+    grid-area: span 2/ span 1;
+}
+
+.span-75 {
+    grid-area: span 1/ span 3;
+}

@@ -1,16 +1,16 @@
 import React from "react";
 import useFetch from "../../../services/useFetch";
-import { setTeamData, setTeamDataDownloadDone } from '../../../features/homeData/homeDataActions';
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 
 
 export default function HomePageTeams()
 {
-    const {data, error, isLoading} = useFetch('http://localhost/api/home/team', "POST")
+    const {data, error, isLoading} = useFetch('http://localhost/api/home/team', "POST");
 
     if (isLoading) <h1>Loading...</h1>
     if (error) <h1>Error</h1>
     if (data) {
+        
         return (
             <>
                 {data.data.map(team=>(
