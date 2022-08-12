@@ -1,0 +1,9 @@
+.email-canvas {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-success {
+    color: var(--color-main-dark);
+    text-decoration: underline;
+}

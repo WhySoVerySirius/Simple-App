@@ -1,10 +1,11 @@
 import React from "react";
 import useFetch from "../../../services/useFetch";
 import { setProjectData, setProjectDataDownloadDone } from "../../../features/homeData/homeDataActions";
+import PopOutContainer from "../../commonComponents/PopOutContainer";
 
 export default function HomePageProjects()
 {
-    const {data, error, isLoading} = useFetch('http://localhost/api/home/project', "POST")
+    const {data, error, isLoading} = useFetch('http://localhost/api/home/project')
 
     if (isLoading) {
         return <h1>Loading...</h1>
@@ -14,7 +15,13 @@ export default function HomePageProjects()
     }
     return (
         <>
-        {data.data.map(project=><div>{project.title}, {project.status}, {project.deadline}, {project.project_manager.full_name}</div>)}
+        {data.data !== 'No projects' && data.data.map(project=>{
+        return (
+            <PopOutContainer>
+                <div>Title: {project.title}, Project manager: {project.project_manager.full_name}</div>
+                <div className="">Status: {project.status}, Deadline: {project.deadline},</div>
+            </PopOutContainer>)
+        })}
         </>
     )
 }

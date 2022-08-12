@@ -1,6 +1,7 @@
 import React from "react";
 import useFetch from "../../../services/useFetch";
 import { setTeamData, setTeamDataDownloadDone } from '../../../features/homeData/homeDataActions';
+import PopOutContainer from "../../commonComponents/PopOutContainer";
 
 
 export default function HomePageTeams()
@@ -12,9 +13,13 @@ export default function HomePageTeams()
     if (data) {
         return (
             <>
-        {console.log(data, 'data is here')}
-        {data.data.map(team=><div>{team.team_title}, {team.team_position}</div>)}
-        </>
+                {data.data.map(team=>(
+                    <PopOutContainer>
+                        <div>Team title: {team.team_title}</div>
+                        <div className="">Position in team: {team.team_position}</div>
+                    </PopOutContainer>
+               ))}
+            </>
         )
     }
 }

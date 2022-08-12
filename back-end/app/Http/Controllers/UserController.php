@@ -9,9 +9,9 @@ use App\Services\UserEditService;
 use App\Traits\UserIdentifyTrait;
 use App\Http\Resources\UsersResource;
 use App\Http\Resources\UserUpdateResource;
+use App\Services\SearchAndPaginateService;
 use App\Services\ValidatorService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Cache;
 use Throwable;
 
 class UserController extends Controller
@@ -29,11 +29,11 @@ class UserController extends Controller
     public function edit(UserEditRequest $request):UserUpdateResource|Throwable|array
     {
         $data = (new ValidatorService($request))->validate();
-        return $data['status']==='success'?new UserUpdateResource((new UserEditService($this->user(),$data['data']))->updateData()):$data['data'];
+        return $data->status==='success'?new UserUpdateResource((new UserEditService($this->user(),$data->data))->updateData()):$data->data;
     }
 
-    public function showUsers()
+    public function showUsers(Request $request)
     {
-        return UsersResource::collection(User::all());
+        return (new SearchAndPaginateService($request, User::class, 10))->resolve();
     }
 }

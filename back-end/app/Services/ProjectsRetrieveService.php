@@ -12,7 +12,7 @@ class ProjectsRetrieveService {
     public function __construct(private User $user)
     {}
 
-    public function retrieve():AnonymousResourceCollection|string
+    public function retrieve():AnonymousResourceCollection|array
     {
         $projects = [];
         $teams = $this->getTeams();
@@ -27,7 +27,7 @@ class ProjectsRetrieveService {
         if (count($projects) > 0) {
             return HomepageProjectsResource::collection($projects);
         }
-        return 'No projects';
+        return ['data'=>'No projects'];
     }
 
     private function getTeams():Collection

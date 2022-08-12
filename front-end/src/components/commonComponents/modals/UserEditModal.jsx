@@ -75,20 +75,20 @@ export default function UserEditModal({clickHandle, modalState})
         <div className="user-info-edit-modal" ref={modalWindow}>
             <div className="modal-inner-container">
                 <form className="modal-user-edit-form" onSubmit={attemptEdit}>
-                <div className="user-profile-image">
-                    {image!==undefined?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
-                    <SimpleButton type={'button'} value={'change picture'} clickHandle={null} buttonRef={fileRef}/>
-                </div>
-                <div className="user-data">
-                    <div className="data">
-                        <ModalInput divRef={titleRef} type={'select'} value={titleState} label={'title'} options={titleOptions} defaultValue={titleState} changeHandle={setTitleState}/>
-                        <ModalInput divRef={fullNameRef} type={'text'} value={fullNameState} label={'full name'} changeHandle={setFullNameState}/>
-                        <ModalInput divRef={emailRef} type={'email'} value={emailState} label={'email'} changeHandle={setEmailState}/>
-                        <ModalInput divRef={statusRef} type={'select'} value={statusState} label={'status'} options={statusOptions} defaultValue={statusState} changeHandle={setStatusState}/>
-                        <ModalInput divRef={descriptionRef} type={'area'} value={descriptionState} label={'description'} changeHandle={setDescriptionState}/>
+                    <div className="user-profile-image">
+                        {image!==undefined?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
                     </div>
-                    <SimpleButton type={'submit'} value={'save'} clickHandle={null}/>
-                </div>
+                    <div className="user-data">
+                        <input type="file"/>
+                        <div className="data">
+                            <ModalInput divRef={titleRef} type={'select'} value={titleState} label={'title'} options={titleOptions} defaultValue={titleState} changeHandle={setTitleState}/>
+                            <ModalInput divRef={fullNameRef} type={'text'} value={fullNameState} label={'full name'} changeHandle={setFullNameState}/>
+                            <ModalInput divRef={emailRef} type={'email'} value={emailState} label={'email'} changeHandle={setEmailState}/>
+                            <ModalInput divRef={statusRef} type={'select'} value={statusState} label={'status'} options={statusOptions} defaultValue={statusState} changeHandle={setStatusState}/>
+                            <ModalInput divRef={descriptionRef} type={'area'} value={descriptionState} label={'description'} changeHandle={setDescriptionState}/>
+                        </div>
+                        <SimpleButton type={'submit'} value={'save'} clickHandle={null}/>
+                    </div>
                 </form>
             </div>
         </div>

@@ -8,18 +8,18 @@ class ValidatorService {
     public function __construct(private $request)
     {}
 
-    public function validate(): array
+    public function validate(): object
     {
         $validator = Validator::make($this->request->all(), $this->request->rules(),$this->request->messages());
         if ($validator->errors()->any()) {
-            return [
+            return (object)[
                 'status'=>'error',
-                'data'=>$validator->errors()->all()
+                'data'=>(object)$validator->errors()->all()
             ];
         }
-        return [
+        return (object)[
             'status'=>'success',
-            'data'=>$validator->safe()->all()
+            'data'=>(object)$validator->safe()->all()
         ];
     }
 }

@@ -20,8 +20,8 @@ class LoginService
     public function authenticate(): array
     {
         $loginType = filter_var($this->loginData->login,FILTER_VALIDATE_EMAIL)?'email':'login';
-        if (auth()->attempt([$loginType=>$this->loginData->login, 'password'=>$this->loginData->password])) {
-            $tokenResponse = $this->apiTokenService->update(auth()->user());
+        if (auth()->attempt([$loginType=>$this->loginData->login, 'password'=>$this->loginData->password], $this->loginData->remember)) {
+            $tokenResponse = $this->apiTokenService->update(auth()->user(),$this->loginData->remember?true:false);
             return $tokenResponse;
         }
         return ['status' => 'failure'];

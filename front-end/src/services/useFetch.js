@@ -5,12 +5,12 @@ export default function useFetch(url, method = 'POST', contentType = 'applicatio
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
-    const getData = async(url, actions) => {
+    const getData = async(url, method, contentType) => {
         fetch(
                 url, {
                     method: method,
                     headers: {
-                        api_token: sessionStorage.getItem('api_token'),
+                        api_token: sessionStorage.getItem('api_token') ? sessionStorage.getItem('api_token') : localStorage.getItem('api_token'),
                         contentType: contentType
                     }
                 }

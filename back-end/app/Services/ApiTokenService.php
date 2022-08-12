@@ -8,7 +8,7 @@ use Illuminate\support\Str;
 
 class ApiTokenService
 {
-    public function update(User $user): array
+    public function update(User $user, bool $remember): array
     {
         $token = Str::random(60);
  
@@ -21,7 +21,8 @@ class ApiTokenService
         return [
             'status' => 'success',
             'token' => $token,
-            'user' => $user
+            'user' => $user,
+            'remember' => $remember,
         ];
     }
 }

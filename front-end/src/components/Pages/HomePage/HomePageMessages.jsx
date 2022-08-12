@@ -12,14 +12,15 @@ export default function HomePageMessages()
         fetch(`http://localhost/api/home/messages/${openMessage}/read`, {
             method: 'POST',
             headers: {
-                api_token: sessionStorage.getItem('api_token'),
+                api_token: sessionStorage.getItem('api_token')?sessionStorage.getItem('api_token'):localStorage.getItem('api_token'),
             },
         })
     }
 
     useEffect(()=>{
-        console.log(openMessage);
-        sendMessageSeen();
+        if (openMessage) {
+            sendMessageSeen();
+        }
     },[openMessage])
 
     if (error) <h1>Ooops, something went wrong...</h1>
@@ -31,9 +32,9 @@ export default function HomePageMessages()
             )
         }
         return (
-            <>
+            <div className="homepage-messages-display">
                 {data.data.map(message=><UnreadMessage data={message} key={message.message_id} openMessage={openMessage} setOpenMessage={setOpenMessage}/>)}
-            </>
+            </div>
         )
     }
 }

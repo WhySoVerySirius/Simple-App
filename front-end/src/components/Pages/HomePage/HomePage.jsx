@@ -8,29 +8,45 @@ import FullUserInfo from "./FullUserInfo";
 import HomePageProjects from "./HomePageProjects";
 import HomePageTeams from "./HomePageTeams";
 import HomePageMessages from './HomePageMessages';
+import PopOutContainer from '../../commonComponents/PopOutContainer';
 
 export default function HomePage()
 {
     const navigate = useNavigate();
+    const {data} = useSelector(selectLoginData);
+
+    useEffect(()=>{
+        if (Object.keys(data).length === 0) {
+            navigate('/login');
+        }
+    },[data])
 
     return (
         <>
         <div className="grid-container">
-            <div className="full-user-info">
-                <FullUserInfo/>
-            </div>
-            <div className="homepage-projects">
-                <div className="homepage-block-title">Assigned projects:</div>
-                <HomePageProjects/>
-            </div>
-            <div className="homepage-teams">
-                <div className="homepage-block-title">Assigned teams:</div>
-                <HomePageTeams/>
-            </div>
-            <div className="homepage-messages">
-                <div className="homepage-block-title">Unread messages:</div>
-                <HomePageMessages/>
-            </div>
+            <PopOutContainer passedClass={'span2'}>
+                <div className="full-user-info">
+                    <FullUserInfo/>
+                </div>
+            </PopOutContainer>
+            <PopOutContainer>
+                <div className="homepage-projects">
+                    <div className="homepage-block-title">Assigned projects:</div>
+                    <HomePageProjects/>
+                </div>
+            </PopOutContainer>
+            <PopOutContainer>
+                <div className="homepage-teams">
+                    <div className="homepage-block-title">Assigned teams:</div>
+                    <HomePageTeams/>
+                </div>
+            </PopOutContainer>
+            <PopOutContainer passedClass={'span2'}>
+                <div className="homepage-messages">
+                    <div className="homepage-block-title">Unread messages:</div>
+                    <HomePageMessages/>
+                </div>
+            </PopOutContainer>
         </div>
     </>
     )

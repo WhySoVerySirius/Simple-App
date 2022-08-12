@@ -28,4 +28,6 @@
     color: white;
 }
 
-.message-reply {}
+.message-reply {
+    margin: 1rem 0;
+}

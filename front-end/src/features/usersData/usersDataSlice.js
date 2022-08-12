@@ -1,8 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setUserData, clearUserData, setUserDataDone } from './usersDataActions';
+import { setUserData, clearUserData, setUserDataDone, setOpenUser, clearOpenUser } from './usersDataActions';
 
 const initialState = {
     data: [],
+    openUser: {},
     error: null,
     responseStatus: null,
     status: false,
@@ -16,7 +17,6 @@ export const usersDataReducer = createSlice({
         builder
             .addCase(setUserData, (state, action) => {
                 state.data = [...action.payload.data];
-                console.log(state.data);
                 state.responseStatus = 200;
             })
             .addCase(clearUserData, (state) => {
@@ -25,6 +25,12 @@ export const usersDataReducer = createSlice({
             })
             .addCase(setUserDataDone, (state) => {
                 state.status = true;
+            })
+            .addCase(setOpenUser, (state, action) => {
+                state.openUser = {...action.payload };
+            })
+            .addCase(clearOpenUser, (state) => {
+                state.openUser = {};
             })
     },
 });

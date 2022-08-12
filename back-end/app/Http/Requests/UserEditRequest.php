@@ -25,7 +25,7 @@ class UserEditRequest extends FormRequest
     {
         return [
             'image' => 'image:jpg,png,jpeg',
-            'full_name' => 'regex:/^[a-zA-Z]+( [a-zA-Z]+)*$/|max:30',
+            'full_name' => 'max:30|regex:/^[a-zA-Z]+( [a-zA-Z]+)*$/',
             'title' => 'in:Mr,Ms,Miss,Mrs',
             'email' => 'email|unique:App\Models\User,email,'.$this->id,
             'description' => 'string|max:255',

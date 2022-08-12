@@ -48,13 +48,13 @@
 
 .main-body-inner-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 5px var(--color-main-darkest);
     width: 100%;
     height: 100%;
-    margin: 1rem;
-    padding: 1rem;
+    padding: 2rem;
 }
 
 #load {

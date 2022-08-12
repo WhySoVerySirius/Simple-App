@@ -1,0 +1,14 @@
+.input-text-area {
+    border: none;
+    box-shadow: 3px 3px 5px var(--color-main-dark);
+    margin-bottom: 1rem;
+    outline: none;
+}
+
+.input-text {
+    border: none;
+    box-shadow: 3px 3px 5px var(--color-main-dark);
+    height: min-content;
+    margin-bottom: 1rem;
+    outline: none;
+}

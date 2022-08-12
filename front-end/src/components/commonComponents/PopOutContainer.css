@@ -1,0 +1,10 @@
+.pop-out-container {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 3px 5px var(--color-main-dark);
+    width: calc(100% - 2.5rem);
+    margin: 0.5rem 0;
+    border-radius: 2px;
+    padding: 1rem;
+    margin-right: 0.5rem;
+}

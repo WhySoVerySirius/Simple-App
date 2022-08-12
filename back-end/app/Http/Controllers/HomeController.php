@@ -22,7 +22,7 @@ class HomeController extends Controller
         return HomepageTeamsResource::collection($this->user()->assignedTeam);
     }
 
-    public function getProjectsData():AnonymousResourceCollection|string
+    public function getProjectsData():AnonymousResourceCollection|array
     {
         return (new ProjectsRetrieveService($this->user()))->retrieve();
     }

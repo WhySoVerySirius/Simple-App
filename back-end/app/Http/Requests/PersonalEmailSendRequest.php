@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PersonalMessageReplyRequest extends FormRequest
+class PersonalEmailSendRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,23 +24,15 @@ class PersonalMessageReplyRequest extends FormRequest
     public function rules()
     {
         return [
-            'reply_target' => 'required',
+            'target_id' => 'required',
             'author' => 'required',
-            'content' => 'required',
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'reply_target.required' => 'Message target is missing',
-            'author.required' => 'Author is missing',
-            'content.required' => 'Content is missing',
+            'email_title' => 'required',
+            'content' => 'required'
         ];
     }
 
     public function validateResolved()
     {
-        return;
+        return ;
     }
 }
