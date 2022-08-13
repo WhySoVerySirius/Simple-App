@@ -150,7 +150,7 @@ class MessageService {
     {
         $validatorData = $this->validator->validate();
         if ($this->author !== 'fail') {
-            if ($validatorData->status === 'success') {
+            if ($validatorData->status === $this->validator::SUCCESS) {
                 return $validatorData->data;
             }
             return self::FAILURE;

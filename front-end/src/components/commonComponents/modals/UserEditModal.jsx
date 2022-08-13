@@ -9,6 +9,7 @@ import './UserEditModal.css'
 import { useDispatch } from "react-redux";
 import { setLoginFailed, setUpdatedData } from "../../../features/loginData/loginDataActions";
 import { useState } from "react";
+import PopOutContainer from "../PopOutContainer";
 
 
 export default function UserEditModal({clickHandle, modalState})
@@ -75,11 +76,14 @@ export default function UserEditModal({clickHandle, modalState})
         <div className="user-info-edit-modal" ref={modalWindow}>
             <div className="modal-inner-container">
                 <form className="modal-user-edit-form" onSubmit={attemptEdit}>
+                    <PopOutContainer>
                     <div className="user-profile-image">
                         {image!==undefined?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
                     </div>
-                    <div className="user-data">
                         <input type="file"/>
+                    </PopOutContainer>
+                    <div className="user-data">
+                        <PopOutContainer>
                         <div className="data">
                             <ModalInput divRef={titleRef} type={'select'} value={titleState} label={'title'} options={titleOptions} defaultValue={titleState} changeHandle={setTitleState}/>
                             <ModalInput divRef={fullNameRef} type={'text'} value={fullNameState} label={'full name'} changeHandle={setFullNameState}/>
@@ -87,6 +91,7 @@ export default function UserEditModal({clickHandle, modalState})
                             <ModalInput divRef={statusRef} type={'select'} value={statusState} label={'status'} options={statusOptions} defaultValue={statusState} changeHandle={setStatusState}/>
                             <ModalInput divRef={descriptionRef} type={'area'} value={descriptionState} label={'description'} changeHandle={setDescriptionState}/>
                         </div>
+                        </PopOutContainer>
                         <SimpleButton type={'submit'} value={'save'} clickHandle={null}/>
                     </div>
                 </form>

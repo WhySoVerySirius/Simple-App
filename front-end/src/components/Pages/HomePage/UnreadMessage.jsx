@@ -7,6 +7,7 @@ import { useSelector } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 import { useEffect } from "react";
+import CommonInput from "../../commonComponents/CommonInput";
 
 export default function UnreadMessage({data, openMessage, setOpenMessage})
 {
@@ -27,6 +28,7 @@ export default function UnreadMessage({data, openMessage, setOpenMessage})
     [loaded])
     
     const sendMessage = () => {
+        setReply(false);
         const messageData = {
             target_id: data.author.id,
             author: userId,
@@ -59,11 +61,11 @@ export default function UnreadMessage({data, openMessage, setOpenMessage})
         }
         if (reply) {
             return (
-                <PopOutContainer>
+                <PopOutContainer passedStyle={{height: 'fit-content'}}>
                     <p className="unread-message-author"><strong>From: </strong>{data.author.name}</p>
                     <p className="unread-message-content">Message: {data.content}</p>
                     <p className="unread-message-created-at">Sent at:{data.created_at}</p>
-                    <textarea name="" id="" cols="30" rows="10" className="message-reply" ref={responseRef} placeholder='Enter reply text here...'/>
+                    <CommonInput type={'textArea'} inputRef={responseRef} placeholder={'Enter reply text here...'}/>
                     <SimpleButton type={'button'} value={'send'} clickHandle={sendMessage}/>
                 </PopOutContainer>
             )

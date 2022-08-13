@@ -19,10 +19,6 @@ class MessageController extends Controller
 {
     use UserIdentifyTrait;
 
-    const SUCCESS = ['status' => 'success'];
-    const FAILURE = ['status' => 'failure'];
-    const LOGOUT = ['status' => 'logout'];
-
     public function sendPersonalMessage(PersonalMessageSendRequest $request):array
     {
         return (new MessageService($this->user(), $request))->sendPrivateMessage();

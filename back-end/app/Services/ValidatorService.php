@@ -7,6 +7,9 @@ use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class ValidatorService {
+    public const SUCCESS = 'success';
+    public const ERROR = 'error';
+
     public function __construct(private object $request)
     {}
 
@@ -15,12 +18,12 @@ class ValidatorService {
         $validator = Validator::make($this->request->all(), $this->request->rules(),$this->request->messages());
         if ($validator->errors()->any()) {
             return (object)[
-                'status'=>'error',
+                'status'=>self::ERROR,
                 'data'=>(object)$validator->errors()->all()
             ];
         }
         return (object)[
-            'status'=>'success',
+            'status'=>self::SUCCESS,
             'data'=>(object)$validator->safe()->all()
         ];
     }

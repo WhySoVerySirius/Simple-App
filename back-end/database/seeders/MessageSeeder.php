@@ -46,7 +46,7 @@ class MessageSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 1000; $i++) { 
+        for ($i=0; $i < 4000; $i++) { 
             $message = Message::create([
                 'content' =>$this->faker->text(),
             ]);
@@ -56,7 +56,7 @@ class MessageSeeder extends Seeder
             $message->privateMessageTarget()->associate($target);
             $message->save();
         }
-        for ($i=0; $i < 1000; $i++) { 
+        for ($i=0; $i < 3000; $i++) { 
             $message = Message::create([
                 'content' =>$this->faker->text(),
             ]);
