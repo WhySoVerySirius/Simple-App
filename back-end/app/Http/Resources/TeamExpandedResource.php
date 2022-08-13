@@ -14,6 +14,10 @@ class TeamExpandedResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'title' => $this->title,
+            'team_leader' => $this->assignedLeader,
+            'projects' => HomepageProjectsResource::collection($this->assignedProject),
+        ];
     }
 }

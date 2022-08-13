@@ -18,3 +18,15 @@
     overflow: hidden;
     background-repeat: no-repeat;
 }
+
+.user-data {
+    height: 100%;
+}
+
+.data {
+    height: 80%;
+}
+
+.homepage-description {
+    overflow-y: scroll;
+}

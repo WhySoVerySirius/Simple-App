@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SelectedTeamMemberResource;
 use App\Http\Resources\ShowTeamsResource;
 use App\Models\Team;
 use App\Traits\UserIdentifyTrait;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
-class TeamsController extends Controller
+class TeamController extends Controller
 {
     use UserIdentifyTrait;
 
@@ -18,8 +19,8 @@ class TeamsController extends Controller
         return ShowTeamsResource::collection($this->user()->assignedTeam);
     }
 
-    public function showTeamExpanded()
+    public function selectedTeamMembers()
     {
-        return Team::find(request()->id);
+        return SelectedTeamMemberResource::collection(Team::find(request()->id)->usersInTeam);
     }
 }

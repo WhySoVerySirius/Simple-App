@@ -3,7 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
-use App\Http\Controllers\TeamsController;
+use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ApiTokenCheckMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +22,10 @@ Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {
     Route::post('home/messages/{id}/read', [HomeController::class, 'messageRead']);
     Route::post('messages/personal/send', [MessageController::class, 'sendPersonalMessage']);
     Route::post('messages/email/send', [MessageController::class, 'sendPersonalEmail']);
-    Route::post('teams/all', [TeamsController::class, 'show']);
-    Route::post('teams/selected', [TeamsController::class, 'showTeamExpanded']);
-
+    Route::post('teams/all', [TeamController::class, 'show']);
+    Route::post('teams/selected/members', [TeamController::class, 'selectedTeamMembers']);
+    Route::post('teams/selected/team/messages', [MessageController::class, 'getTeamMessages']);
+    Route::post('teams/selected/team/messages/send', [MessageController::class, 'sendTeamMessage']);
+    Route::post('teams/selected/project/messages', [MessageController::class, 'getProjectMessages']);
+    Route::post('teams/selected/project/messages/send', [MessageController::class, 'sendProjectMessage']);
 });

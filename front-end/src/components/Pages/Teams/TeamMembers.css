@@ -1,0 +1,11 @@
+.selected-team-members-container {
+    height: calc(100%-4rem);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.selected-team-members-inner-container {
+    overflow-y: scroll;
+    height: min-content;
+}

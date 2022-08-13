@@ -1,0 +1,11 @@
+.selected-team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.span-2 {
+    grid-area: span 2/ span 2;
+}

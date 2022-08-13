@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Message;
+use App\Models\Project;
+use App\Models\Team;
 use App\Models\User;
 use Illuminate\Container\Container;
 use Illuminate\Database\Seeder;
@@ -52,6 +54,28 @@ class MessageSeeder extends Seeder
             $target = User::find(random_int(1,200));
             $message->messageAuthor()->associate($author);
             $message->privateMessageTarget()->associate($target);
+            $message->save();
+        }
+        for ($i=0; $i < 1000; $i++) { 
+            $message = Message::create([
+                'content' =>$this->faker->text(),
+            ]);
+            $author = User::find(random_int(1,200));
+            $target = Team::find(random_int(1,50));
+            $message->message_mode = 'team';
+            $message->messageAuthor()->associate($author);
+            $message->teamMessage()->associate($target);
+            $message->save();
+        }
+        for ($i=0; $i < 5000; $i++) { 
+            $message = Message::create([
+                'content' =>$this->faker->text(),
+            ]);
+            $author = User::find(random_int(1,200));
+            $target = Project::find(random_int(1,800));
+            $message->message_mode = 'project';
+            $message->messageAuthor()->associate($author);
+            $message->projectMessage()->associate($target);
             $message->save();
         }
     }

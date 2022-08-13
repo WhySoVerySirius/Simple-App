@@ -50,7 +50,7 @@ class ProjectSeeder extends Seeder
      */
     public function run()
     {
-        for ($i=0; $i < 200; $i++) { 
+        for ($i=0; $i < 800; $i++) { 
             $project = Project::create([
                 'title' => Str::random(7),
                 'status' => $this->state[array_rand($this->state)],
@@ -62,7 +62,7 @@ class ProjectSeeder extends Seeder
             $customer = Customer::find(random_int(1, 50));
             $project->customer()->associate($customer);
 
-            $team = Team::find(random_int(1, 10));
+            $team = Team::find(random_int(1, 45));
             $project->assignedTeams()->attach($team, ['created_at' => now()]);
 
             $project->save();

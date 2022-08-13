@@ -19,7 +19,7 @@ export const teamDataReducer = createSlice({
                 state = {};
             })
             .addCase(actions.setSelectedTeam, (state, action) => {
-                state.selectedTeam = action.payload;
+                state.selectedTeam = {...action.payload };
             })
             .addCase(actions.clearSelectedTeam, (state) => {
                 state.selectedTeam = {};

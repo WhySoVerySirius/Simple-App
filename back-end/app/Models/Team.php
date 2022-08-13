@@ -27,11 +27,11 @@ class Team extends Model
 
     public function messages(): HasMany
     {
-        return $this->hasMany(Message::class);
+        return $this->hasMany(Message::class, 'team_id');
     }
 
     public function usersInTeam(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'team_members')->using(TeamMember::class);
+        return $this->belongsToMany(User::class, 'team_members')->using(TeamMember::class)->withPivot('team_position');
     }
 }

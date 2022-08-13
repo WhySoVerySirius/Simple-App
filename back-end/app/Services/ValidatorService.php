@@ -2,10 +2,12 @@
 
 namespace App\Services;
 
+use App\Models\Team;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 
 class ValidatorService {
-    public function __construct(private $request)
+    public function __construct(private object $request)
     {}
 
     public function validate(): object

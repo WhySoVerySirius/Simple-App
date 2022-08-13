@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ShowTeamsResource extends JsonResource
+class GetTeamMessagesResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +15,10 @@ class ShowTeamsResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'id' => $this->id,
-            'title' => $this->title,
-            'position'=>$this->pivot->team_position,
-            'team_leader' => new TeamLeaderResource($this->assignedLeader),
-            'projects' => HomepageProjectsResource::collection($this->assignedProject)
+            'message_id' => $this->id,
+            'content' => $this->content,
+            'created_at' => date('Y:m:d H:i:s', strtotime($this->created_at)),
+            'author' => new HomeMessagesAuthorResource($this->messageAuthor)
         ];
     }
 }

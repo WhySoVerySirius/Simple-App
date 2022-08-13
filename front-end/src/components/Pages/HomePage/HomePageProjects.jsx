@@ -13,15 +13,16 @@ export default function HomePageProjects()
     if (error) {
         return <h1>{console.log(error)}error</h1>
     }
+    console.log(data);
     return (
-        <>
-        {data.data !== 'No projects' && data.data.map(project=>{
-        return (
-            <PopOutContainer>
-                <div>Title: {project.title}, Project manager: {project.project_manager.full_name}</div>
-                <div className="">Status: {project.status}, Deadline: {project.deadline},</div>
-            </PopOutContainer>)
-        })}
-        </>
+        <div className="homepage-projects-display">
+            {data.data !== 'No projects' && data.data.map(project=>{return (
+                <PopOutContainer key={project.title}>
+                    <div>Title: {project.title}, Project manager: {project.project_manager.full_name}</div>
+                    <div className="">Status: {project.status}, Deadline: {project.deadline},</div>
+                </PopOutContainer>
+            )
+            })}
+        </div>
     )
 }

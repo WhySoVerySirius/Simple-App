@@ -1,0 +1,4 @@
+.team-message-canvas {
+    display: flex;
+    flex-direction: column;
+}

@@ -15,6 +15,7 @@ class HomepageProjectsResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'project_id' => $this->id,
             'title' => $this->title,
             'status' => $this->status,
             'project_manager' => $this->projectManager->only('full_name'),

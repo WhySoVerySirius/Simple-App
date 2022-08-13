@@ -24,7 +24,7 @@ export default function FullUserInfo()
                         <p>Name: {full_name}</p>
                         <p>Email: {email}</p>
                         <p>Status: {status}</p>
-                        <p>Description: {description?description:'Description is missing'}</p>
+                        <div className="homepage-description">Description: {description?description:'Description is missing'}</div>
                     </div>
                     <SimpleButton type={'button'} value={'edit'} clickHandle={()=>setEditData(true)}/>
                 </div>

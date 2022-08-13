@@ -21,7 +21,7 @@ export default function Teams()
         dispatch(setAllTeamsData(data.data))
         return (
             <div className="teams-grid-container">
-            <PopOutContainer passedClass={'span-two-columns'}>
+            <PopOutContainer passedClass={'span-two-columns'} passedStyle={{overflowY:'scroll'}}>
                 <AssignedTeams/>
             </PopOutContainer>
             <PopOutContainer passedClass={'top-right'}>
@@ -30,10 +30,10 @@ export default function Teams()
             <PopOutContainer passedClass={'span-75'}>
                 <TeamProjects/>
             </PopOutContainer>
-            <PopOutContainer passedClass={'span-half-row'}>
+            <PopOutContainer passedClass={'span-half-row'} passedStyle={{overflowY:'scroll'}}>
                 <TeamMessages/>
             </PopOutContainer>
-            <PopOutContainer passedClass={'span-half-row'}>
+            <PopOutContainer passedClass={'span-half-row'} passedStyle={{overflowY:'scroll'}}>
                 <ProjectMessages/>
             </PopOutContainer>
             <PopOutContainer passedClass={'span-row'}>

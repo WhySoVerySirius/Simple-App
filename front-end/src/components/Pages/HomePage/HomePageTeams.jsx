@@ -12,14 +12,14 @@ export default function HomePageTeams()
     if (data) {
         
         return (
-            <>
+            <div className="homepage-teams-display">
                 {data.data.map(team=>(
-                    <PopOutContainer>
+                    <PopOutContainer key={team.team_title}>
                         <div>Team title: {team.team_title}</div>
                         <div className="">Position in team: {team.team_position}</div>
                     </PopOutContainer>
                ))}
-            </>
+            </div>
         )
     }
 }
