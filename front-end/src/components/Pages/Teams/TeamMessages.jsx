@@ -8,7 +8,7 @@ import CommonInput from "../../commonComponents/CommonInput";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 import SimpleButton from "../../commonComponents/SimpleButton";
 import SingleTeamMessage from "./SingleTeamMessage";
-import './TeamMessages.css';
+import './css/TeamMessages.css';
 
 export default function TeamMessages()
 {

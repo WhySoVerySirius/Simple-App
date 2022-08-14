@@ -28,7 +28,7 @@ class AuthorizationService {
         return $allow;
     }
 
-    public function authorizeProjectMessage(Project $project)
+    public function authorizeProject(Project $project)
     {
         $allow = false;
         $projectTeams = $project->assignedTeams;
@@ -42,4 +42,5 @@ class AuthorizationService {
         }
         return $allow;
     }
+
 }

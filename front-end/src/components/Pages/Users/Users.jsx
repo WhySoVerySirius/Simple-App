@@ -13,7 +13,7 @@ export default function Users()
 {
     const dispatch = useDispatch();
     const [searchParam, setSearchParam] = useState();
-    const [limit, setLimit] = useState(17);
+    const [limit, setLimit] = useState();
 
     const {data, isLoading, error} = useFetch(
         `http://localhost/api/user/show-users?search=${searchParam?searchParam:''}&limit=${limit?limit:1}`,

@@ -1,6 +1,6 @@
 export default async function registerAttempt(registerData) {
     const response = await fetch(
-        'http://localhost/register', {
+        'http://localhost/api/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

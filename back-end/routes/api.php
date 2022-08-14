@@ -30,4 +30,8 @@ Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {
     Route::post('teams/selected/team/messages/send', [MessageController::class, 'sendTeamMessage']);
     Route::post('teams/selected/project/messages', [MessageController::class, 'getProjectMessages']);
     Route::post('teams/selected/project/messages/send', [MessageController::class, 'sendProjectMessage']);
+    Route::post('project/files', [FilesController::class, 'getProjectFiles']);
+    Route::post('project/upload/file', [FilesController::class, 'uploadFile']);
+    Route::post('project/upload/link', [FilesController::class, 'uploadLink']);
+    Route::post('project/download', [FilesController::class, 'downloadFile']);
 });

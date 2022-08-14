@@ -23,7 +23,6 @@ export default function UserEditModal({clickHandle, modalState})
     const [fullNameState, setFullNameState] = useState(full_name);
     const [emailState, setEmailState] = useState(email);
     const [descriptionState, setDescriptionState] = useState(description);
-    const [upload, setUpload] = useState(false);
     const [file, setFile] = useState();
     const titleRef = useRef();
     const statusRef = useRef();
@@ -31,7 +30,6 @@ export default function UserEditModal({clickHandle, modalState})
     const emailRef = useRef();
     const descriptionRef = useRef();
     const modalWindow = useRef()
-    const fileRef = useRef();
     const statusOptions = ['available', 'unavailable'];
     const titleOptions = ['Mr', 'Mrs', 'Ms', 'Miss'];
 

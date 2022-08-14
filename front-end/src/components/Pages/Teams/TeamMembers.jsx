@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
-import './TeamMembers.css';
+import './css/TeamMembers.css';
 
 export default function TeamMembers({selectedTeam})
 {

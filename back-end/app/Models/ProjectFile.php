@@ -14,13 +14,19 @@ class ProjectFile extends Model
 
     protected $table = 'project_files';
 
+    protected $fillable = [
+        'repository',
+        'path',
+        'file_title',
+    ];
+
     public function project(): BelongsTo
     {
-        return $this->belongsTo(Project::class);
+        return $this->belongsTo(Project::class, 'project_id');
     }
 
     public function fileOwner(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
 }

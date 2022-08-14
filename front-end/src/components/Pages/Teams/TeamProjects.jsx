@@ -1,10 +1,10 @@
 import React ,{useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { selectTeamData } from "../../../features/teamData/teamDataSlice";
-import { setProjectMessages, setSelectedProject } from "../../../features/UsersProjectData/usersSelectedProjectActions";
+import { setProjectFiles, setProjectMessages, setSelectedProject } from "../../../features/UsersProjectData/usersSelectedProjectActions";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 import SingleProject from "./SingleProject";
-import './TeamProjects.css';
+import './css/TeamProjects.css';
 
 
 export default function TeamProjects()
@@ -34,9 +34,31 @@ export default function TeamProjects()
         }
     }
 
+    const fetchFiles = async() => {
+        const response = await fetch(
+            'http://localhost/api/project/files',
+            {
+                method: "POST",
+                headers: {
+                    api_token: sessionStorage.getItem('api_token')
+                        ?sessionStorage.getItem('api_token')
+                        :localStorage.getItem('api_token'),
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({project_id:clicked})
+            }
+        )
+        const data = await response.json();
+        if (data.status === 'success') {
+            dispatch(setProjectFiles(data.data));
+            dispatch(setSelectedProject(clicked));
+        }
+    }
+
     useEffect(()=>{
         if (clicked) {
             fetchMessages();
+            fetchFiles();
         }
     },[clicked])
 

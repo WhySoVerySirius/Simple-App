@@ -1,0 +1,12 @@
+.selected-project-files-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.selected-project-files-inner-container {
+    width: 50%;
+    height: 100%;
+    overflow-y: scroll;
+}

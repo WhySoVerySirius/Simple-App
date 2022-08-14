@@ -3,7 +3,7 @@ import * as actions from './usersSelectedProjectActions';
 
 const initialState = {
     project: 0,
-    files: {},
+    files: [],
     messages: []
 };
 
@@ -18,6 +18,9 @@ export const usersSelectedProjectReducer = createSlice({
             })
             .addCase(actions.setProjectMessages, (state, action) => {
                 state.messages = [...action.payload];
+            })
+            .addCase(actions.setProjectFiles, (state, action) => {
+                state.files = [...action.payload];
             })
     },
 });

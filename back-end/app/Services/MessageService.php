@@ -111,7 +111,7 @@ class MessageService {
         if (is_object($validatedData)) {
             $project = Project::findOrFail($validatedData->project_id);
             if ($project) {
-                if ($this->authorization->authorizeProjectMessage($project)) {
+                if ($this->authorization->authorizeProject($project)) {
                     return [
                         'status' => self::SUCCESS,
                         'data' => GetTeamMessagesResource::collection($project->messages)];
@@ -129,7 +129,7 @@ class MessageService {
         if (is_object(($validatedData))) {
             $project = Project::findOrFail($validatedData->project_id);
             if ($project) {
-                if ($this->authorization->authorizeProjectMessage($project)) {
+                if ($this->authorization->authorizeProject($project)) {
                     $message = Message::create(['content' => $validatedData->content]);
                     $message->message_mode = 'project';
                     $message->messageAuthor()->associate($this->author);

@@ -24,7 +24,9 @@ export default function AuthForm()
     const navigate = useNavigate();
 
     const loginAttempt = (loginData) => {
-        fetch('http://localhost/api/login', {
+        fetch(
+            'http://localhost/api/login',
+            {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -43,6 +45,12 @@ export default function AuthForm()
                 }
             })
             .catch(err => dispatch(setLoginFailed(err)))
+    }
+
+    const registerAttempt = (registerData) => {
+        fetch(
+            'http://localhost/api/register'
+        )
     }
 
     const evalCreds = (creds) => {

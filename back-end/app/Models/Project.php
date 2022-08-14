@@ -36,6 +36,6 @@ class Project extends Model
 
     public function files(): HasMany
     {
-        return $this->hasMany(ProjectFile::class);
+        return $this->hasMany(ProjectFile::class, 'project_id');
     }
 }

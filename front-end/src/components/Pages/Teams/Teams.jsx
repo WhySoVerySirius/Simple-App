@@ -9,7 +9,7 @@ import SelectedTeam from "./SelectedTeam";
 import TeamMessages from "./TeamMessages";
 import TeamProjects from "./TeamProjects";
 import { setAllTeamsData } from "../../../features/teamData/teamDataActions";
-import './Teams.css';
+import './css/Teams.css';
 
 export default function Teams()
 {

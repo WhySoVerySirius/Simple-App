@@ -18,8 +18,10 @@ return new class extends Migration
             $table->foreignId('project_id')->nullable()->constrained();
             $table->enum('repository', ['local', 'github', 'dockerhub']);
             $table->string('path');
+            $table->string('file_title')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

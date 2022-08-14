@@ -1,0 +1,9 @@
+.file-info-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.file-info-container>img {
+    height: 50px;
+    width: 50px;
+}

@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { selectTeamData } from "../../../features/teamData/teamDataSlice";
 import useFetch from "../../../services/useFetch";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
-import './SelectedTeam.css';
+import './css/SelectedTeam.css';
 import TeamMembers from "./TeamMembers";
 
 export default function SelectedTeam()
