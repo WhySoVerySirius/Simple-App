@@ -3,3 +3,4 @@ export const SET_LOGIN_DATA = 'SET_LOGIN_DATA';
 export const SET_LOGOUT = 'SET_LOGOUT';
 export const SET_RESPONSE_STATUS = 'SET_RESPONSE_STATUS';
 export const SET_UPDATED_DATA = 'SET_UPDATED_DATA';
+export const SET_NEW_PICTURE = 'SET_NEW_PICTURE';

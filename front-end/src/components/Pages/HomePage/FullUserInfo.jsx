@@ -10,13 +10,14 @@ export default function FullUserInfo()
 {
     const [editData, setEditData] = useState(false);
     const {data} = useSelector(selectLoginData);
-    const {title, full_name, email, image, status, description } = data;
-
+    const {title, full_name, email, image_path, status, description } = data;
+    console.log(image_path);
+    
     if (!editData) {
         return (
             <>
                 <div className="user-profile-image">
-                    {image!==undefined?<img src={image} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
+                    {image_path!==null?<img src={image_path} alt='user profile image'/>:<div className="user-profile-image-missing"></div>}
                 </div>
                 <div className="user-data">
                     <div className="data">

@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('project_files', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('project_id')->constrained();
+            $table->foreignId('project_id')->nullable()->constrained();
             $table->enum('repository', ['local', 'github', 'dockerhub']);
             $table->string('path');
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->nullable()->constrained();
             $table->timestamps();
         });
     }

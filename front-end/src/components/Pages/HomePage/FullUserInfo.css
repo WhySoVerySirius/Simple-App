@@ -6,7 +6,11 @@
     align-items: center;
 }
 
-.user-profile-image>img {}
+.user-profile-image>img {
+    height: 100%;
+    width: 90%;
+    object-fit: contain;
+}
 
 .user-profile-image-missing {
     height: 300px;

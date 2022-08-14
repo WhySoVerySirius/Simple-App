@@ -9,7 +9,7 @@ import Layout from './Layout';
 import pages from './Pages/Pages';
 
 export default function MainComponent() {
-    const {loginStatus} = useSelector(selectLoginData);
+    const {loginStatus, data} = useSelector(selectLoginData);
     const dispatch = useDispatch();  
     useEffect(()=>{
         const currentWindow = window.location.pathname;
@@ -24,6 +24,7 @@ export default function MainComponent() {
             dispatch(setResponseStatus(response.status))
             const data = await response.json();
             if (data !== 'Logout') {
+                console.log(data.data);
                 dispatch(setLoginData(data.data));
                 return;
             }
@@ -37,13 +38,6 @@ export default function MainComponent() {
         getData(sessionStorage.getItem('api_token'))},
     []
     )
-
-    const ProtectedRoute = ({loginStatus, children}) => {
-        if (!loginStatus) {
-            return <Navigate to='/login' replace/>
-        }
-        return children;
-    }
 
     return (
         <BrowserRouter>
@@ -69,35 +63,6 @@ export default function MainComponent() {
         </BrowserRouter> 
         
     );
-    // return (
-    //     <BrowserRouter>
-    //     {console.log('routes resolve')}
-    //         <Routes>
-    //         {pages.map(page=>{
-    //             return page.sub
-    //                 ? <Route 
-    //                     path={page.path}
-    //                     key={page.path}
-    //                     element={
-    //                         <ProtectedRoute loginStatus={loginStatus}>
-    //                             <Layout pages={pages} current={page.naming} type={'multiple'}>{page.element}</Layout>
-    //                         </ProtectedRoute>
-    //                     }
-    //                 />
-    //                 : <Route
-    //                     path={page.path}
-    //                     key={page.path}
-    //                     element={
-    //                         <ProtectedRoute loginStatus={loginStatus}>
-    //                             <Layout pages={pages} current={page.naming} type={'single'}>{page.element}</Layout>
-    //                         </ProtectedRoute>
-    //                     }
-    //                 />
-    //             })}
-    //         </Routes>
-    //     </BrowserRouter> 
-        
-    // );
 }
 
 

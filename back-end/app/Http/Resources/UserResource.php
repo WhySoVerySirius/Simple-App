@@ -20,7 +20,16 @@ class UserResource extends JsonResource
         return [
             'status' => 'success',
             'token' => $this->api_token,
-            'user' => $this->resource
+            'user' => (object)[
+                'api_token' => $this->api_token,
+                'description' => $this->description,
+                'email' => $this->email,
+                'full_name' => $this->full_name,
+                'id' => $this->id,
+                'status' => $this->status,
+                'title' => $this->title,
+                'image_path' => asset("images/{$this->id}/".pathinfo($this->image_path,PATHINFO_BASENAME))
+            ]
         ];
     }
 }

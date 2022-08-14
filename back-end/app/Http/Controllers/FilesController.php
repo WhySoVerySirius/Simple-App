@@ -13,6 +13,6 @@ class FilesController extends Controller
 
     public function uploadImage(UploadImageRequest $request)
     {
-        return (new StorageService($this->user, $request))->store();
+        return (new StorageService($this->user(), $request))->store();
     }
 }

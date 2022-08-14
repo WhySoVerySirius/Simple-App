@@ -13,7 +13,7 @@ class UploadImageRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,6 +25,7 @@ class UploadImageRequest extends FormRequest
     {
         return [
             'file' => 'required|image',
+            'id' => 'required',
         ];
     }
 
@@ -33,6 +34,7 @@ class UploadImageRequest extends FormRequest
         return [
             'file.required' => 'File is missing',
             'file.image' => 'Image type is not supported',
+            'id.required' => 'Id is missing',
         ];
     }
 

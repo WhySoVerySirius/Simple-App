@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { setLoginData, setLoginFailed, setLogout, setResponseStatus, setUpdatedData } from './loginDataActions';
+import { setLoginData, setLoginFailed, setLogout, setNewPicture, setResponseStatus, setUpdatedData } from './loginDataActions';
 
 const initialState = {
     data: {},
@@ -37,6 +37,9 @@ export const loginDataReducer = createSlice({
             })
             .addCase(setUpdatedData, (state, action) => {
                 state.data = action.payload.user;
+            })
+            .addCase(setNewPicture, (state, action) => {
+                state.data = {...state.data, image_path: action.payload }
             })
     },
 });
