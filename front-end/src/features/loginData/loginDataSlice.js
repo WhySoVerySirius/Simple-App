@@ -7,6 +7,7 @@ const initialState = {
     loginStatus: false,
     error: null,
     responseStatus: null,
+    role: null,
 };
 
 export const loginDataReducer = createSlice({
@@ -19,6 +20,8 @@ export const loginDataReducer = createSlice({
                 state.error = action.payload.error
             })
             .addCase(setLoginData, (state, action) => {
+                console.log(action.payload);
+                state.role = action.payload.user.role;
                 state.loginStatus = true;
                 state.data = action.payload.user;
                 state.token = action.payload.token;

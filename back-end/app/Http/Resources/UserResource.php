@@ -28,7 +28,8 @@ class UserResource extends JsonResource
                 'id' => $this->id,
                 'status' => $this->status,
                 'title' => $this->title,
-                'image_path' => asset("images/{$this->id}/".pathinfo($this->image_path,PATHINFO_BASENAME))
+                'image_path' => asset("images/{$this->id}/".pathinfo($this->image_path,PATHINFO_BASENAME)),
+                'role'=>$this->role,
             ]
         ];
     }

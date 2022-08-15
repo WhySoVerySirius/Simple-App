@@ -31,11 +31,14 @@ export default function MainComponent() {
             dispatch(setLogout());
             return;
         }
-        if (!sessionStorage.getItem('api_token')) {
+        if (!sessionStorage.getItem('api_token') && !localStorage.getItem('api_token')) {
             dispatch(setLogout());
             return;
         };
-        getData(sessionStorage.getItem('api_token'))},
+        const token = sessionStorage.getItem('api_token')
+            ?sessionStorage.getItem('api_token')
+            :localStorage.getItem('api_token');
+        getData(token)},
     []
     )
 

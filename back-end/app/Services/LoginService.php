@@ -43,6 +43,6 @@ class LoginService
             }
             return ['status' => 'something went wrong'];
         }
-        return $data->data;
+        return ['status' => 'failure', 'data' =>(array)$data->data];
     }
 }

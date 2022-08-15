@@ -1,17 +1,17 @@
 import Login from './Login/Login';
 import HomePage from './HomePage/HomePage';
-import Projects from './Projects/Projects';
-import Chat from './Chat/Chat';
 import Users from './Users/Users'
 import Teams from './Teams/Teams';
+import Admin from './Admin/Admin';
 
 const pages = [
-    { path: '/', element: <HomePage/> , naming: 'home', sub: null },
-    { path: '/projects', element: <Projects/>, naming: 'projects', sub: []},
-    { path: '/chats', element: <Chat/>, naming: 'chats', sub: []},
-    { path: '/users', element: <Users/> , naming: 'users', sub: []},
-    { path: '/teams', element: <Teams/>, naming: 'teams', sub: []},
-    { path: '/login', element: <Login/> , naming: 'login', sub: null },
+
+    { path: '/', element: <HomePage/> , naming: 'home'},
+    // { path: '/projects', element: <Projects/>, naming: 'projects', sub: []},
+    { path: '/users', element: <Users/> , naming: 'users'},
+    { path: '/teams', element: <Teams/>, naming: 'teams'},
+    { path: '/login', element: <Login/> , naming: 'login'},
+    {path: '/admin', element: <Admin/>, naming: 'admin'}
 ]
 
 export default pages;

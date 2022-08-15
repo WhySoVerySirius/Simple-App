@@ -4,6 +4,7 @@ import homeDataReducer from '../features/homeData/homeDataSlice';
 import usersDataReducer from '../features/usersData/usersDataSlice';
 import teamDataReducer from '../features/teamData/teamDataSlice';
 import usersSelectedProjectReducer from '../features/UsersProjectData/usersSelectedProjectSlice';
+import adminDataReducer from '../features/adminData/adminDataSlice';
 
 export const store = configureStore({
     reducer: {
@@ -12,5 +13,6 @@ export const store = configureStore({
         userData: usersDataReducer,
         teamData: teamDataReducer,
         selectedProjectData: usersSelectedProjectReducer,
+        adminData: adminDataReducer,
     },
 });

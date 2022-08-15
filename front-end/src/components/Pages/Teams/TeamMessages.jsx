@@ -72,7 +72,7 @@ export default function TeamMessages()
             <>
                 <div className="">
                     <div className="">Team Messages</div>
-                    <PopOutContainer>
+                    <PopOutContainer passedStyle={{height:'fit-content'}}>
                         <div className="" onClick={()=>setRespond(true)}>Write a message</div>
                     </PopOutContainer>
                 </div>
@@ -93,12 +93,8 @@ export default function TeamMessages()
     return (
             <>
                 <div className="">
-                    <div className="">Team Messages</div>
-                    <PopOutContainer>
-                        <div className="" onClick={()=>setRespond(true)}>Write a message</div>
-                    </PopOutContainer>
+                    <div className="">No team selected</div>
                 </div>
-                <PopOutContainer>No messages</PopOutContainer>
             </>
         )
 }

@@ -1,0 +1,8 @@
+.add-user-display {
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.add-user-display>* {
+    height: fit-content;
+}

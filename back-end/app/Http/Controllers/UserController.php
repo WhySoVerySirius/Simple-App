@@ -29,7 +29,9 @@ class UserController extends Controller
     public function edit(UserEditRequest $request):UserUpdateResource|Throwable|array
     {
         $data = (new ValidatorService($request))->validate();
-        return $data->status==='success'?new UserUpdateResource((new UserEditService($this->user(),$data->data))->updateData()):$data->data;
+        return $data->status==='success'
+            ?new UserUpdateResource((new UserEditService($this->user(),$data->data))->updateData())
+            :$data->data;
     }
 
     public function showUsers(Request $request)

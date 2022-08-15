@@ -2,6 +2,7 @@
 
 namespace App\Traits;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Support\Facades\Cache;
 
@@ -15,5 +16,17 @@ trait UserIdentifyTrait {
             return $user;
         }
         return 'fail';
+    }
+
+    public function admin():bool
+    {
+        $authorize = false;
+        $user = User::where('api_token',request()->header('api_token'))->first();
+        foreach ($user->role as $role) {
+            if ($role->role_title === Role::ROLE_ADMIN) {
+                $authorize = true;
+            }
+        }
+        return $authorize;
     }
 }

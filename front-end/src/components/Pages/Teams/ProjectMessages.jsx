@@ -40,7 +40,7 @@ export default function ProjectMessages()
             <>
                 <div className="">
                     <div className="">Project Messages</div>
-                    <PopOutContainer>
+                    <PopOutContainer passedStyle={{height: 'fit-content'}}>
                         <div className="" onClick={()=>setRespond(true)}>Write a message</div>
                     </PopOutContainer>
                 </div>

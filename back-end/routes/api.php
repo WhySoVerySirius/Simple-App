@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FilesController;
 use App\Http\Controllers\HomeController;
@@ -34,4 +35,10 @@ Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {
     Route::post('project/upload/file', [FilesController::class, 'uploadFile']);
     Route::post('project/upload/link', [FilesController::class, 'uploadLink']);
     Route::post('project/download', [FilesController::class, 'downloadFile']);
+    Route::post('admin/data', [AdminController::class, 'getData']);
+    Route::post('admin/team/{teamId}/user/add', [AdminController::class, 'addUserToTeam']);
+    Route::post('admin/team/{teamId}/user/remove', [AdminController::class, 'removeUserFromTeam']);
+    Route::post('admin/project/{$projectId}/update', [AdminController::class, 'updateTeamProject']);
+    Route::post('admin/team/{teamId}/project/remove', [AdminController::class, 'removeProjectFromTeam']);
+
 });

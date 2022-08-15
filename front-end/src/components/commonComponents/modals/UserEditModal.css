@@ -21,7 +21,7 @@
 }
 
 .modal-user-edit-form {
-    height: 50%;
+    height: 45%;
     width: 50%;
     display: flex;
     flex-direction: column;
@@ -30,7 +30,6 @@
 }
 
 .user-profile-image {
-    width: 100%%;
     height: 30%;
 }
 

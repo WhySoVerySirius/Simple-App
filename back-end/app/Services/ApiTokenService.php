@@ -23,6 +23,7 @@ class ApiTokenService
             'token' => $token,
             'user' => $user,
             'remember' => $remember,
+            'role' => $user->role,
         ];
     }
 }
