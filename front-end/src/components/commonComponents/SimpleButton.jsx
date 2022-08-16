@@ -1,5 +1,5 @@
 import React from "react";
-import './SimpleButton.css';
+import './css/SimpleButton.css';
 
 export default function SimpleButton({type, value, clickHandle, buttonRef, passedStyle})
 {

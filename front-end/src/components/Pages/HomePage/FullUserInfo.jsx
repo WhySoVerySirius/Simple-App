@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
 import Modal from "../../commonComponents/Modal";
 import SimpleButton from "../../commonComponents/SimpleButton";
-import './FullUserInfo.css';
+import './css/FullUserInfo.css';
 
 export default function FullUserInfo()
 {

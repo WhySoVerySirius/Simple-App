@@ -8,19 +8,14 @@ use App\Http\Controllers\MessageController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\ApiTokenCheckMiddleware;
-use App\Http\Requests\PasswordResetRequest;
-use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
 
 
 Route::post('register', [AuthController::class, 'register'])->name('register');
 Route::post('login', [AuthController::class, 'login'])->name('login');
-Route::post('/forgot-password', function (PasswordResetRequest $request) {
-    $status = Password::sendResetLink($request->safe());
-    return $status === Password::RESET_LINK_SENT
-        ?['status' => 'success']
-        :['status' => 'failure'];
-});
+Route::post('/forgot-password', [AuthController::class, 'forgotPassword']);
+Route::get('/reset-password/{token}',[AuthController::class, 'resetPasswordLink'] )->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');
 
 
 Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {  
@@ -52,6 +47,9 @@ Route::middleware([ApiTokenCheckMiddleware::class])->group(function() {
     Route::post('admin/team/create', [AdminController::class, 'createTeam']);
     Route::post('admin/team/{teamId}/project/remove', [AdminController::class, 'removeProjectFromTeam']);
     Route::post('admin/project/{id}/team/assign' , [AdminController::class, 'assignProject']);
+    Route::delete('admin/team/{id}/delete', [AdminController::class, 'deleteTeam']);
+    Route::delete('admin/project/{id}/delete', [AdminController::class, 'deleteProject']);
+    Route::post('admin/project/create', [AdminController::class, 'createProject']);
 });
 
 

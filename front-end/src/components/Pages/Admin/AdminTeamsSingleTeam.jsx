@@ -21,12 +21,17 @@ export default function AdminTeamsSingleTeam({team, actions})
     const [selectedUserPosition, setSelectedUserPosition] = useState('developer');
     const dispatch = useDispatch();
     const handlers = [setSelectedUser, setAddMemberOpen];
+    const [deleteTeam, setDeleteTeam] = useState(false);
+
     useEffect(()=>{
         if (selectedUser) {
             addMemberFetch();
             setSelectedUser();
         }
-    }, [selectedUser])
+        if (deleteTeam) {
+            teamDelete();
+        }
+    }, [selectedUser, deleteTeam])
 
     const addMemberFetch = () => {
         fetch(
@@ -48,6 +53,31 @@ export default function AdminTeamsSingleTeam({team, actions})
                 dispatch(updateAdminTeamMembers({team_id: team.team_id, user:selectedUser}))
             }
         });
+    }
+
+    const teamDelete = () => {
+        fetch(
+            `http://localhost/api/admin/team/${team.team_id}/delete`,
+            {
+                method:'DELETE',
+                headers: {
+                    api_token: sessionStorage.getItem('api_token')
+                        ?sessionStorage.getItem('api_token')
+                        :localStorage.getItem('api_token')
+                }
+            }
+        )
+        .then(res=>res.json())
+        .then(res=>{
+            if (res.status === 'success') {
+                alert('Team deleted')
+            }
+            if (res.status === 'failure') {
+                alert('Something went wrong')
+            }
+        })
+        .catch(err=>console.log('Error: ', err))
+        .finally(setDeleteTeam(false));
     }
 
     if (open === team.team_id) {
@@ -94,6 +124,7 @@ export default function AdminTeamsSingleTeam({team, actions})
                             :null
                     }
                 </PopOutContainer>
+                <SimpleButton type={'button'} value={'Delete team'} clickHandle={()=>setDeleteTeam(true)}/>
             </PopOutContainer>
         )
     }

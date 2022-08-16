@@ -5,7 +5,7 @@ import { selectUsersData } from "../../../features/usersData/usersDataSlice";
 import CommonInput from "../../commonComponents/CommonInput";
 import SimpleButton from "../../commonComponents/SimpleButton";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
-import './SingleUserOpen.css';
+import './css/SingleUserOpen.css';
 
 
 export default function SingleUserOpen({passedProps})

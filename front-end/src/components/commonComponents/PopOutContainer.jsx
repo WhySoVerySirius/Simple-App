@@ -1,5 +1,5 @@
 import React from "react";
-import './PopOutContainer.css'
+import './css/PopOutContainer.css'
 
 export default function PopOutContainer({children, clickHandle, passedClass, passedStyle})
 {

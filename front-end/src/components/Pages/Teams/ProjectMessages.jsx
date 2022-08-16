@@ -20,7 +20,7 @@ export default function ProjectMessages()
         setRespond(false);
         if (messageRef.current && messageRef.current.value.length > 0) {
             fetch(
-                'http://localhost/api/teams/selected/team/messages/send',
+                'http://localhost/api/teams/selected/project/messages/send',
                 {
                     method:"POST",
                     headers: {

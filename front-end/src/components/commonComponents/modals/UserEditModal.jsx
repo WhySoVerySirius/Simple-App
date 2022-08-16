@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
 import SimpleButton from "../SimpleButton";
 import ModalInput from "./ModalInput";
-import './UserEditModal.css'
+import './css/UserEditModal.css'
 import { useDispatch } from "react-redux";
 import { setLoginFailed, setNewPicture, setUpdatedData } from "../../../features/loginData/loginDataActions";
 import { useState } from "react";

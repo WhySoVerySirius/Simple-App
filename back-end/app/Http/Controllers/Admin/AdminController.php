@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AddUserToTeamRequest;
 use App\Http\Requests\AdminCreateTeamRequest;
 use App\Http\Requests\AssignProjectToTeamRequest;
+use App\Http\Requests\CreateProjectRequest;
 use App\Http\Requests\RemoveProjectFromTeamRequest;
 use App\Http\Requests\RemoveUserFromTeamRequest;
 use App\Http\Requests\UpdateTeamProjectRequest;
@@ -78,6 +79,27 @@ class AdminController extends Controller
     {
         return $this->admin()
             ?(new AdminActionService($request->safe()))->assignProjectToTeam($id)
+            :self::NOT_AUTHORIZED;
+    }
+
+    public function deleteTeam(string $teamId):array
+    {
+        return $this->admin()
+            ?(new AdminActionService())->deleteTeam($teamId)
+            :self::NOT_AUTHORIZED;
+    }
+
+    public function deleteProject(string $projectId):array
+    {
+        return $this->admin()
+            ?(new AdminActionService())->deleteProject($projectId)
+            :self::NOT_AUTHORIZED;
+    }
+
+    public function createProject(CreateProjectRequest $request):array
+    {
+        return $this->admin()
+            ?(new AdminActionService($request->safe()))->createProject()
             :self::NOT_AUTHORIZED;
     }
 }

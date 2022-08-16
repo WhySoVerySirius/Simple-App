@@ -6,7 +6,7 @@ import { selectUsersData } from "../../../features/usersData/usersDataSlice";
 import { setOpenUser } from "../../../features/usersData/usersDataActions";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 import SingleUser from "./SingleUser";
-import './UsersDisplay.css';
+import './css/UsersDisplay.css';
 
 export default function UsersDisplay()
 {

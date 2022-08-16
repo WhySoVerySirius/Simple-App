@@ -1,6 +1,6 @@
 import React, {useEffect}from "react";
 import AuthForm from "./AuthForm";
-import './Login.css';
+import './css/Login.css';
 import { useSelector } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
 import { useNavigate } from "react-router-dom";

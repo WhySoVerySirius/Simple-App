@@ -2,7 +2,7 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import './CommonInput.css';
+import './css/CommonInput.css';
 import {TextareaAutosize} from '@material-ui/core';
 
 export default function CommonInput({inputRef, type='text', placeholder})

@@ -3,7 +3,7 @@ import LoginInput from "./LoginInput";
 import { useSelector, useDispatch } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
 import { setLoginData, setLoginFailed, setLogout } from '../../../features/loginData/loginDataActions';
-import './AuthForm.css';
+import './css/AuthForm.css';
 import SubmitButton from "./SubmitButton";
 import SimpleButton from '../../commonComponents/SimpleButton';
 import { useNavigate } from "react-router-dom";
@@ -79,7 +79,7 @@ export default function AuthForm()
 
     const sendReminder = (email) => {
         fetch(
-            'http://localhost/api/reset',
+            'http://localhost/api/forgot-password',
             {
                 method:'POST',
                 headers: {
@@ -199,6 +199,7 @@ export default function AuthForm()
                 <PopOutContainer passedStyle={{height:'fit-content', width:'fit-content'}}>
                     <CommonInput placeholder={'Enter your email here'} inputRef={remindRef} type={'email'}/>
                     <SimpleButton type={'submit'} value={'remind me'}/>
+                    <div className="" onClick={()=>setLegend('Login')}>Back to login</div>
                 </PopOutContainer>
             </form>
         )

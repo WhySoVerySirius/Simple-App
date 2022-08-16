@@ -15,7 +15,6 @@ export default function AdminTeamsSingleProject({team, data})
     const [update, setUpdate] = useState(false);
     const [remove, setRemove] = useState(false);
     const dispatch = useDispatch();
-    console.log(team)
 
     useEffect(()=>{
         if (update) {

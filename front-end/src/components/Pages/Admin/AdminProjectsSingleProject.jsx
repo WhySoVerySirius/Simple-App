@@ -4,21 +4,54 @@ import PopOutContainer from "../../commonComponents/PopOutContainer";
 import folder from '../../../folder.png';
 import docker from '../../../docker.png';
 import github from '../../../github.png';
+import SimpleButton from "../../commonComponents/SimpleButton";
+import { useEffect } from "react";
 
 export default function AdminProjectsSingleProject({project})
 {
     const [open, setOpen] = useState(false);
+    const [deleteProject, setDeleteProject] = useState(false);
+
+    useEffect(()=>{
+        if (deleteProject) {
+            fetch(
+                `http://localhost/api/admin/project/${project.id}/delete`,
+                {
+                    method : 'DELETE',
+                    headers : {
+                        api_token : sessionStorage.getItem('api_token')
+                            ?sessionStorage.getItem('api_token')
+                            :localStorage.getItem('api_token')
+                    }
+                }
+            )
+            .then(res=>res.json())
+            .then(res=>{
+                if (res.status === 'success') {
+                    alert('Project deleted')
+                }
+                if (res.status === 'failure') {
+                    alert('Something went wrong')
+                }
+                if (res.status === 'Not authorized') {
+                    alert('Not authorized')
+                }
+            })
+            .catch(err=>console.log('Error: ', err))
+            .finally(setDeleteProject());
+        }
+    },[deleteProject])
 
     if (!open) {
         return (
-            <PopOutContainer passedStyle={{height: 'fit-content'}} clickHandle={()=>setOpen(true)}>
+            <PopOutContainer passedStyle={{height: 'fit-content'}} clickHandle={()=>setOpen(true)} passedClass={'hovered'}>
                 <div className="">Title: {project.title} / Manager: {project.project_manager.full_name}</div>
                 <div className="">Status {project.status} / Deadline: {project.deadline}</div>
             </PopOutContainer>
         )
     }
     return (
-        <PopOutContainer passedStyle={{height: 'fit-content'}} clickHandle={()=>setOpen(false)}>
+        <PopOutContainer passedStyle={{height: 'fit-content'}} clickHandle={()=>setOpen(false)} passedClass={'hovered clicked'}>
                 <div className="">Title: {project.title} / Manager: {project.project_manager.title} {project.project_manager.full_name}, email: {project.project_manager.email}</div>
                 <div className="">Status {project.status} / Deadline: {project.deadline}</div>
                 <div className="files-and-messages" style={{height: '300px', display: 'flex'}}>
@@ -62,6 +95,7 @@ export default function AdminProjectsSingleProject({project})
                         </div>
                     </PopOutContainer>
                 </div>
+                    <SimpleButton type={'button'} value={'delete project'} clickHandle={()=>setDeleteProject(true)}/>
         </PopOutContainer>
     )
 }

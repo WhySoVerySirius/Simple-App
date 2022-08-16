@@ -14,7 +14,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 85%;
+    height: 90%;
     width: 80%;
     background-color: var(--color-main-ultra-light);
     z-index: 5;
@@ -39,7 +39,9 @@
     object-fit: contain;
 }
 
-.user-data {}
+.user-data {
+    height: 80%;
+}
 
 .data {
     display: flex;

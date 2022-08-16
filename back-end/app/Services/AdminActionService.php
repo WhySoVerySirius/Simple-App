@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Http\Resources\NewTeamCreatedResource;
-use App\Models\Project;
 use App\Models\Team;
 use App\Models\User;
 
@@ -14,7 +13,7 @@ class AdminActionService {
     private TeamUpdateService $teamUpdateService;
     private ProjectUpdateService $projectUpdateService;
 
-    public function __construct(private $data)
+    public function __construct(private $data = null)
     {
         $this->teamUpdateService = new TeamUpdateService;
         $this->projectUpdateService = new ProjectUpdateService;
@@ -82,6 +81,36 @@ class AdminActionService {
     {
         $this->teamUpdateService->setTeam($this->data->team_id);
         return $this->teamUpdateService->assignProject($id)
+            ?self::SUCCESS
+            :self::FAILURE;
+    }
+
+    public function deleteTeam(string $teamId):array
+    {
+        $this->teamUpdateService->setTeam($teamId);
+        return $this->teamUpdateService->delete()
+            ?self::SUCCESS
+            :self::FAILURE;
+    }
+
+    public function deleteProject(string $projectId):array
+    {
+        $this->projectUpdateService->setProject($projectId);
+        return $this->projectUpdateService->delete()
+            ?self::SUCCESS
+            :self::FAILURE;
+    }
+
+    public function createProject():array
+    {
+        $this->projectUpdateService->createProject(
+            [
+                'title' => $this->data->title,
+                'deadline' => $this->data->deadline,
+                'status' => $this->data->status
+            ]
+        );
+        return $this->projectUpdateService->assignProjectManager($this->data->managerId)
             ?self::SUCCESS
             :self::FAILURE;
     }

@@ -14,7 +14,6 @@ export default function AdminTeamsAddProject({team})
     const [searchParams, setSearchparams] = useState('');
     const [assignProject, setAssignProject] = useState();
     const memoizedProjects = useMemo(()=>{return projectData.filter(project=>project.title.toLowerCase().includes(searchParams.toLowerCase()))},[searchParams]);
-    console.log(assignProject)
 
     useEffect(()=>{
         if (assignProject) {
@@ -46,7 +45,6 @@ export default function AdminTeamsAddProject({team})
                     memoizedProjects && memoizedProjects.map(project=>{
                         return (
                             <PopOutContainer passedStyle={{height: 'fit-content', alignContent: 'start'}} key={project.id}>
-                                {console.log(project)}
                                 <div className="">Title: {project.title} / Manager: {project.project_manager.full_name}</div>
                                 <div className="">Project status: {project.status} / Deadline {project.deadline}</div>
                                 <SimpleButton type={'button'} value={'assign'} clickHandle={()=>setAssignProject(project.id)}/>

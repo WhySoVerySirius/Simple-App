@@ -15,7 +15,7 @@
 .user-profile-image-missing {
     height: 300px;
     aspect-ratio: 1;
-    background-image: url(../../../missing-image.png);
+    background-image: url(../../../../missing-image.png);
     background-size: contain;
     background-position: center;
     border-radius: 50%;

@@ -11,7 +11,7 @@ export default function AdminTeamsActions()
         <>
             {
                 !open
-                    ?<PopOutContainer clickHandle={()=>setOpen(!open)}>
+                    ?<PopOutContainer clickHandle={()=>setOpen(!open)} passedClass={'clicked hovered'}>
                         Create new team
                     </PopOutContainer>
                     :<AdminCreateTeam clickHandle={()=>setOpen(!open)}/>

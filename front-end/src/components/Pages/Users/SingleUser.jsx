@@ -4,7 +4,7 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { selectLoginData } from "../../../features/loginData/loginDataSlice";
-import './SingleUser.css';
+import './css/SingleUser.css';
 import SingleUserOpen from "./SingleUserOpen";
 
 export default function SingleUser({data, setTrackOpenUser, trackOpenUser})

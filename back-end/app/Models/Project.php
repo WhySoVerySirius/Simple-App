@@ -17,6 +17,7 @@ class Project extends Model
     protected $fillable = [
         'deadline',
         'status',
+        'title',
     ];
 
     public function projectManager(): BelongsTo

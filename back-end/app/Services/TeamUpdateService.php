@@ -10,6 +10,11 @@ class TeamUpdateService {
 
     private Team $team;
 
+    public function createTeam(array $data):void
+    {
+        $this->team = new Team($data);
+    }
+
     public function setTeam(string $team_id):void
     {
         $this->team = Team::findOrFail($team_id);
@@ -45,5 +50,10 @@ class TeamUpdateService {
         $project = Project::findOrFail($id);
         $this->team->assignedProject()->attach($project);
         return $this->team->save();
+    }
+
+    public function delete():bool|null
+    {
+        return $this->team->delete();
     }
 }

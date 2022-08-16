@@ -7,7 +7,7 @@ import useFetch from "../../../services/useFetch";
 import Pagination from "../../commonComponents/Pagination";
 import SearchBar from "../../commonComponents/SearchBar";
 import UsersDisplay from "./UsersDisplay";
-import './Users.css';
+import './css/Users.css';
 
 export default function Users()
 {
