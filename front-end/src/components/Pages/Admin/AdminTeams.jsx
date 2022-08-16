@@ -13,7 +13,7 @@ export default function AdminTeams()
     const [open, setOpen] = useState();
     const actions = [open, setOpen];
 
-    const {teamData} = useSelector(selectAdminData);
+    const {teamData, dataStatus} = useSelector(selectAdminData);
     if (teamData.length > 0) {
         return (
             <div className="admin-teams-grid">
@@ -22,15 +22,22 @@ export default function AdminTeams()
                 </div>
                 <div className="admin-teams-display">
                     {
-                        teamData && teamData.map(team=><AdminTeamsSingleTeam team={team} actions={actions}/>)
+                        teamData && teamData.map(team=><AdminTeamsSingleTeam team={team} actions={actions} key={team.team_id}/>)
                     }
                 </div>
             </div>
         )
     }
+    if (dataStatus == 'loading') {
+        return (
+            <div className="">
+                <img src="https://media.giphy.com/media/xTkcEQACH24SMPxIQg/giphy.gif"/>
+            </div>
+        )
+    }
     return (
         <PopOutContainer>
-            No teams available
+            Please wait...
         </PopOutContainer>
     )
 }

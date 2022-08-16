@@ -8,6 +8,7 @@ import AdminTeamsAddUser from "./AdminTeamsAddUser";
 import { useDispatch } from "react-redux";
 import { updateAdminTeamMembers } from "../../../features/adminData/adminDataActions";
 import AdminTeamsSingleProject from "./AdminTeamsSingleProject";
+import AdminTeamsAddProject from "./AdminTeamsAddProject";
 
 export default function AdminTeamsSingleTeam({team, actions})
 {
@@ -15,12 +16,11 @@ export default function AdminTeamsSingleTeam({team, actions})
     const [openMembers, setOpenMembers] = useState(false);
     const [openProjects, setOpenProjects] = useState(false);
     const [addMemberOpen, setAddMemberOpen] = useState(false);
+    const [addProjectOpen, setAddProjectOpen] = useState(false);
     const [selectedUser, setSelectedUser] = useState();
     const [selectedUserPosition, setSelectedUserPosition] = useState('developer');
     const dispatch = useDispatch();
     const handlers = [setSelectedUser, setAddMemberOpen];
-    console.log(team.projects);
-
     useEffect(()=>{
         if (selectedUser) {
             addMemberFetch();
@@ -57,7 +57,7 @@ export default function AdminTeamsSingleTeam({team, actions})
                 <PopOutContainer passedClass={'hovered'}>
                     <div className="" onClick={()=>setOpenMembers(!openMembers)}>Members</div>
                     {   openMembers
-                            ?team.members && team.members.map(member=><AdminTeamsSingleMember team={team.team_id} data={member}/>)
+                            ?team.members && team.members.map(member=><AdminTeamsSingleMember team={team.team_id} data={member} key={member.id}/>)
                             :null
                     }
                     {
@@ -75,12 +75,22 @@ export default function AdminTeamsSingleTeam({team, actions})
                     <div className="" onClick={()=>setOpenProjects(!openProjects)}>Projects</div>
                     {
                         openProjects && team.projects
-                            ?team.projects && team.projects.map(project=><AdminTeamsSingleProject data={project}/>)
+                            ?team.projects.map(project=><AdminTeamsSingleProject team={team} data={project} key={project.project_id}/>)
                             :null
                     }
                     {
-                        openProjects && !team.projects
+                        openProjects && team.projects.length<1
                             ?<PopOutContainer>No projects assigned</PopOutContainer>
+                            :null
+                    }
+                    {
+                        openProjects && !addProjectOpen
+                            ?<SimpleButton type={'button'} value={'add project'} clickHandle={()=>setAddProjectOpen(true)}/>
+                            :null
+                    }
+                    {
+                        openProjects && addProjectOpen
+                            ?<AdminTeamsAddProject team={team}/>
                             :null
                     }
                 </PopOutContainer>

@@ -56,6 +56,8 @@ export default function SingleUser({data, setTrackOpenUser, trackOpenUser})
                     headers: {
                         'Content-Type' : 'application/json',
                         api_token : sessionStorage.getItem('api_token')
+                            ?sessionStorage.getItem('api_token')
+                            :localStorage.getItem('api_token')
                     },
                     body: JSON.stringify(uploadData)
                 }

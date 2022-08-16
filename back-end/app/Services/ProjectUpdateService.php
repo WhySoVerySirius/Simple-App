@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Project;
+use Illuminate\Support\ValidatedInput;
 
 class ProjectUpdateService {
     private Project $project;
@@ -12,9 +13,9 @@ class ProjectUpdateService {
         $this->project = Project::findOrFail($projectId);
     }
 
-    public function updateProjectData(array $data)
+    public function updateProjectData(ValidatedInput $data)
     {
-        return $this->project->update($data)
+        return $this->project->update(['deadline' => $data->deadline, 'status' => $data->status])
             ?true
             :false;
     }

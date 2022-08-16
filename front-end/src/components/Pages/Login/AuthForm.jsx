@@ -9,6 +9,7 @@ import SimpleButton from '../../commonComponents/SimpleButton';
 import { useNavigate } from "react-router-dom";
 import evalCreds from "./services/evalCreds";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
+import CommonInput from "../../commonComponents/CommonInput";
 
 export default function AuthForm()
 {
@@ -26,6 +27,9 @@ export default function AuthForm()
     const loginData = useSelector(selectLoginData);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const remindRef = useRef();
+
+
 
     const loginAttempt = (loginData) => {
         fetch(
@@ -73,6 +77,29 @@ export default function AuthForm()
             }))
     }
 
+    const sendReminder = (email) => {
+        fetch(
+            'http://localhost/api/reset',
+            {
+                method:'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({email:email})
+            }
+        )
+        .then(res=>res.json())
+        .then(res=> {
+            if (res.status === 'success') {
+                alert('Password reset link has been sent')
+            }
+            if (res.status === 'failure') {
+                alert('Something went wrong')
+            }
+        })
+        .catch(err=>console.log('Error: ',err))
+    }
+
     const handleRegister = async (event) => {
         event.preventDefault();
         setRules();
@@ -91,8 +118,6 @@ export default function AuthForm()
         setRules(rules);
     }
 
-    console.log(rules);
-
     const handleLogin = (event) => {
         event.preventDefault();
         const loginAttemptData = {
@@ -101,6 +126,12 @@ export default function AuthForm()
             remember: remember
         }
         loginAttempt(loginAttemptData);
+    }
+
+    const handleRemind = (event) => {
+        event.preventDefault();
+        const email = remindRef.current.value;
+        sendReminder(email);
     }
 
     if(legend === 'Register')
@@ -162,6 +193,16 @@ export default function AuthForm()
             </form>
         )
     }
+    if (legend === 'forgot') {
+        return (
+            <form onSubmit={handleRemind}>
+                <PopOutContainer passedStyle={{height:'fit-content', width:'fit-content'}}>
+                    <CommonInput placeholder={'Enter your email here'} inputRef={remindRef} type={'email'}/>
+                    <SimpleButton type={'submit'} value={'remind me'}/>
+                </PopOutContainer>
+            </form>
+        )
+    }
     return (
         <form onSubmit={handleLogin} className='auth-form'>
             <PopOutContainer>
@@ -178,6 +219,7 @@ export default function AuthForm()
                     </div>
                     <SimpleButton value={'login'} type={'Submit'}/>
                 </div>
+                <p onClick={()=>setLegend('forgot')} style={{color:'var(--color-main-dark)', cursor:'pointer'}}>Forgot password?</p>
                 <p>Not registered? <span onClick={()=>setLegend('Register')} style={{color:'var(--color-main-dark)'}}>click here</span></p>
             </PopOutContainer>
         </form>

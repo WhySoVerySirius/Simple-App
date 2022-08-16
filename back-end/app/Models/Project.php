@@ -14,6 +14,11 @@ class Project extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'deadline',
+        'status',
+    ];
+
     public function projectManager(): BelongsTo
     {
         return $this->belongsTo(User::class, 'project_manager');

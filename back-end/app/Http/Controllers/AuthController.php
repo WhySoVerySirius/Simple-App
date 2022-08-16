@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\PasswordResetRequest;
 use App\Http\Requests\RegisterRequest;
 use App\Services\LoginService;
-use App\Services\RegisterService;
+use Illuminate\Support\Facades\Password;
 
 class AuthController extends Controller
 {
@@ -15,10 +16,12 @@ class AuthController extends Controller
         return $loginService->authenticate();
     }
 
-    public function register(RegisterRequest $registerRequest)
+    public function register(RegisterRequest $registerRequest): array
     {
-        $registerService = new LoginService($registerRequest);
-        return $registerService->register();
+        $loginService = new LoginService($registerRequest);
+        return $loginService->register();
     }
+
+
 }
 

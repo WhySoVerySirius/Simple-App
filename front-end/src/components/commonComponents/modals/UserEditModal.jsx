@@ -48,6 +48,8 @@ export default function UserEditModal({clickHandle, modalState})
                 headers:{
                     "Content-Type" : "application/json",
                     api_token: sessionStorage.getItem('api_token')
+                        ?sessionStorage.getItem('api_token')
+                        :localStorage.getItem('api_token')
                 },
                 body: JSON.stringify(data)
             }
@@ -73,7 +75,6 @@ export default function UserEditModal({clickHandle, modalState})
 
     const attemptPictureUpload = async (event) => {
         event.preventDefault();
-        console.log(file);
         if (file) {
             const formData = new FormData();
             formData.append("id", id);

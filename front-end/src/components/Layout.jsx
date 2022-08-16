@@ -25,7 +25,6 @@ export default function Layout({children, type, pages, current})
         }
     },[loginData])
 
-    console.log(role);
 
     if (loginData.responseStatus == 429) {
         return (

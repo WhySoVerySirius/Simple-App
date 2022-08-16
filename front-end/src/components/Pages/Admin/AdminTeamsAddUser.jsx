@@ -19,40 +19,44 @@ export default function AdminTeamsAddUser({team, changeHandle, clickHandle})
     if (search != '') {
         return (
             <PopOutContainer clickHandle={()=>setAddMemberOpen(false)}>
-                <SearchBar onChangeHandle={setSearch}/>
-                <div className="add-user-display">
-                    {memoizedUsers && memoizedUsers.map(user=>
-                        <PopOutContainer>
-                            <div className="">{user.title} {user.full_name}</div>
-                            <div className="">Status: {user.status}</div>
-                            <select name="" id="" onChange={(e)=>changeHandle(e.target.value)} style={{width:'fit-content'}}>
-                                <option value="developer">Developer</option>
-                                <option value="support">Support</option>
-                                <option value="tester">Tester</option>
-                            </select>
-                            <SimpleButton type={'button'} value={'add'} clickHandle={()=>setSelectedUser(user)}/>
-                        </PopOutContainer>
-                    )}
+                <div className="" onClick={(e)=>e.stopPropagation()}>
+                    <SearchBar onChangeHandle={setSearch}/>
+                    <div className="add-user-display">
+                        {memoizedUsers && memoizedUsers.map(user=>
+                            <PopOutContainer>
+                                    <div className="">{user.title} {user.full_name}</div>
+                                    <div className="">Status: {user.status}</div>
+                                    <select name="" id="" onChange={(e)=>changeHandle(e.target.value)} style={{width:'fit-content'}}>
+                                        <option value="developer">Developer</option>
+                                        <option value="support">Support</option>
+                                        <option value="tester">Tester</option>
+                                    </select>
+                                    <SimpleButton type={'button'} value={'add'} clickHandle={()=>setSelectedUser(user)}/>
+                            </PopOutContainer>
+                        )}
+                    </div>
                 </div>
             </PopOutContainer>
         )
     }
     return (
         <PopOutContainer clickHandle={()=>setAddMemberOpen(false)}>
-            <SearchBar onChangeHandle={setSearch}/>
-            <div className="add-user-display">
-                {filteredUsers && filteredUsers.map(user=>
-                    <PopOutContainer>
-                        <div className="">{user.title} {user.full_name}</div>
-                        <div className="">Status: {user.status}</div>
-                        <select name="" id="" onChange={(e)=>changeHandle(e.target.value)} style={{width:'fit-content'}}>
-                                <option value="developer">Developer</option>
-                                <option value="support">Support</option>
-                                <option value="tester">Tester</option>
-                            </select>
-                        <SimpleButton type={'button'} value={'add'} clickHandle={()=>setSelectedUser(user)}/>
-                    </PopOutContainer>
-                )}
+            <div className="" onClick={(e)=>e.stopPropagation()}>
+                <SearchBar placeHolder={"Search by user's name "} onChangeHandle={setSearch}/>
+                <div className="add-user-display">
+                    {filteredUsers && filteredUsers.map(user=>
+                        <PopOutContainer>
+                                <div className="">{user.title} {user.full_name}</div>
+                                <div className="">Status: {user.status}</div>
+                                <select name="" id="" onChange={(e)=>changeHandle(e.target.value)} style={{width:'fit-content'}}>
+                                        <option value="developer">Developer</option>
+                                        <option value="support">Support</option>
+                                        <option value="tester">Tester</option>
+                                    </select>
+                                <SimpleButton type={'button'} value={'add'} clickHandle={()=>setSelectedUser(user)}/>
+                        </PopOutContainer>
+                    )}
+                </div>
             </div>
         </PopOutContainer>
     )

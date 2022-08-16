@@ -16,7 +16,6 @@ export default function SelectedTeam()
     if (Object.keys(selectedTeam).length > 0) {
         return (
             <div className="selected-team-grid">
-                {console.log(selectedTeam)}
                 <PopOutContainer passedStyle={passedStyle}>
                     <div className="selected-team-info">
                         <div className="">Selected team:</div>

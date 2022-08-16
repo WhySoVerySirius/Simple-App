@@ -22,6 +22,7 @@ export default function Sidebar({pages})
 
     const logout = () => {
         sessionStorage.removeItem('api_token');
+        localStorage.removeItem('api_token');
         dispatch(setLogout());
         navigate('/login');
     }

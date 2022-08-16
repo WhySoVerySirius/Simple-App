@@ -11,7 +11,6 @@ export default function FullUserInfo()
     const [editData, setEditData] = useState(false);
     const {data} = useSelector(selectLoginData);
     const {title, full_name, email, image_path, status, description } = data;
-    console.log(image_path);
     
     if (!editData) {
         return (

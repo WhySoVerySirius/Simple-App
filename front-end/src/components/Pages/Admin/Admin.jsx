@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAdminData } from "../../../features/adminData/adminDataActions";
+import { setAdminData, setAdminDataStatus } from "../../../features/adminData/adminDataActions";
 import PopOutContainer from "../../commonComponents/PopOutContainer";
 import AdminActions from "./AdminActions";
 import AdminActionWindow from "./AdminActionWindow";
@@ -21,6 +21,7 @@ export default function Admin()
     },[clicked])
 
     const getData = () => {
+        dispatch(setAdminDataStatus('loading'))
         fetch(
             `http://localhost/api/admin/data`,
             {
@@ -39,11 +40,11 @@ export default function Admin()
             }
         })
         .catch(err=>console.log('Error: ',err))
+        .finally(dispatch(setAdminDataStatus('loaded')))
     }
 
     return (
         <div className="admin-grid">
-            {console.log(clicked)}
             <PopOutContainer>
                 <AdminActions actions={actions}/>
             </PopOutContainer>

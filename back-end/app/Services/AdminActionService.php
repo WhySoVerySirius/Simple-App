@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Http\Resources\NewTeamCreatedResource;
 use App\Models\Project;
+use App\Models\Team;
 use App\Models\User;
 
 class AdminActionService {
@@ -47,13 +49,40 @@ class AdminActionService {
     public function updateTeamProject(string $projectId):array
     {
         $this->projectUpdateService->setProject($projectId);
-        $project = Project::findOrFail($this->data->project_id);
-        if ($project) {
-            if ($this->projectUpdateService->updateProjectData($this->data)) {
-                return self::SUCCESS;
+        if ($this->projectUpdateService->updateProjectData($this->data)) {
+            return self::SUCCESS;
+        }
+        return self::FAILURE;
+    }
+
+    public function createTeam():array
+    {
+        $team = Team::create(['title' => $this->data->title]);
+        if ($team) {
+            $this->teamUpdateService->setTeam($team->id);
+            if ($this->teamUpdateService->setTeamLeader($this->data->team_leader)) {
+                $updatedTeam = Team::find($team->id);
+                return ['status' => 'success', 'data' => new NewTeamCreatedResource($updatedTeam)];
             }
             return self::FAILURE;
         }
         return self::FAILURE;
+    }
+
+    public function removeProjectFromTeam(string $teamId):array
+    {
+        $this->teamUpdateService->setTeam($teamId);
+        if ($this->teamUpdateService->removeProject($this->data->project_id)) {
+            return self::SUCCESS;
+        }
+        return self::FAILURE;
+    }
+
+    public function assignProjectToTeam(string $id):array
+    {
+        $this->teamUpdateService->setTeam($this->data->team_id);
+        return $this->teamUpdateService->assignProject($id)
+            ?self::SUCCESS
+            :self::FAILURE;
     }
 }

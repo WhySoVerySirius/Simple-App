@@ -24,7 +24,6 @@ export default function MainComponent() {
             dispatch(setResponseStatus(response.status))
             const data = await response.json();
             if (data !== 'Logout') {
-                console.log(data.data);
                 dispatch(setLoginData(data.data));
                 return;
             }

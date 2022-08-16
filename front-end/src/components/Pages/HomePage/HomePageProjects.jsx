@@ -10,10 +10,11 @@ export default function HomePageProjects()
     if (isLoading) {
         return <h1>Loading...</h1>
     }
+    
     if (error) {
         return <h1>{console.log(error)}error</h1>
     }
-    console.log(data);
+
     return (
         <div className="homepage-projects-display">
             {data.data !== 'No projects' && data.data.map(project=>{return (

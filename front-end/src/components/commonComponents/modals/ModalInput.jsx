@@ -15,7 +15,7 @@ export default function ModalInput({type, value, label, options, defaultValue, c
             <>
             <label htmlFor={label}>{label}</label>
                 <select id={label} value={defaultValue} onChange={(e)=>changeHandle(e.target.value)} ref={divRef}>
-                    {options.map(option=><option value={option}>{option}</option>)}
+                    {options.map(option=><option value={option} key={option}>{option}</option>)}
                 </select>
             </>
         )

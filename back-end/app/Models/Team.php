@@ -15,6 +15,10 @@ class Team extends Model
     use HasFactory;
     use SoftDeletes;
 
+    protected $fillable = [
+        'title',
+    ];
+
     public function assignedLeader():BelongsTo
     {
         return $this->belongsTo(User::class, 'team_leader', 'id');

@@ -98,7 +98,6 @@ export default function ProjectFiles()
         }
     },[sendLink, sendFile])
 
-    console.log(openSendLink);
     if (files[0] === 'none') {
         return (
             <div className="selected-project-files-container">
@@ -139,7 +138,7 @@ export default function ProjectFiles()
                 <div className="selected-project-files-inner-container">
                     <div className="">Project Files</div>
                     {
-                        files && files.map(file=><SingleFile data={file}/>)
+                        files && files.map(file=><SingleFile key={file.id} data={file}/>)
                     }
                 </div>
                 <div className="selected-project-files-actions">

@@ -20,7 +20,6 @@ export const loginDataReducer = createSlice({
                 state.error = action.payload.error
             })
             .addCase(setLoginData, (state, action) => {
-                console.log(action.payload);
                 state.role = action.payload.user.role;
                 state.loginStatus = true;
                 state.data = action.payload.user;

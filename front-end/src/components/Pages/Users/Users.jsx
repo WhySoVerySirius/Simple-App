@@ -27,7 +27,7 @@ export default function Users()
         return (
             <>
             <div className="users-search-container">
-                <SearchBar searchParam={searchParam} onChangeHandle={setSearchParam}/>
+                <SearchBar placeHolder={"Search by user's name"} searchParam={searchParam} onChangeHandle={setSearchParam}/>
             </div>
             <div className="users-display">
                 <UsersDisplay/>
