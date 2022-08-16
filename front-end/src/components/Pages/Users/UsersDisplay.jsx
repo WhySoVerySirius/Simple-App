@@ -23,7 +23,7 @@ export default function UsersDisplay()
 
     return (
         <>
-            {data && data.map(user=><PopOutContainer key={user.id}><SingleUser data={user} trackOpenUser={trackOpenUser} setTrackOpenUser={setTrackOpenUser}/></PopOutContainer>)}
+            {data && data.map(user=><PopOutContainer key={user.id} passedStyle={{height:'fit-content'}}><SingleUser data={user} trackOpenUser={trackOpenUser} setTrackOpenUser={setTrackOpenUser}/></PopOutContainer>)}
         </>
     )
     
