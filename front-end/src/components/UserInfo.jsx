@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { selectLoginData } from "../features/loginData/loginDataSlice";
-import './UserInfo.css';
+import './css/UserInfo.css';
 
 export default function UserInfo()
 {

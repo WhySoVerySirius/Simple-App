@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from '../LogoSimple.png';
 import SimpleButton from "./commonComponents/SimpleButton";
-import './Sidebar.css';
+import './css/Sidebar.css';
 import UserInfo from './UserInfo';
 import { useDispatch } from "react-redux";
 import { setLogout } from "../features/loginData/loginDataActions";

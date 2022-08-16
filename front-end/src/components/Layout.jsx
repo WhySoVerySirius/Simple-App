@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import './Layout.css';
+import './css/Layout.css';
 import { useSelector } from "react-redux";
 import { selectLoginData } from "../features/loginData/loginDataSlice";
 import { useEffect } from "react";
