@@ -51,7 +51,7 @@ export default function UnreadMessage({data, openMessage, setOpenMessage})
     if (openMessage === data.message_id) {
         if (!reply) {
             return (
-                <PopOutContainer>
+                <PopOutContainer passedStyle={{height: 'fit-content'}}>
                     <p className="unread-message-author"><strong>From: </strong>{data.author.name}</p>
                     <p className="unread-message-content">Message: {data.content}</p>
                     <p className="unread-message-created-at">Sent at: {data.created_at}</p>
