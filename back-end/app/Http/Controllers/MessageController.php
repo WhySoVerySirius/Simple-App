@@ -36,6 +36,7 @@ class MessageController extends Controller
 
     public function sendTeamMessage(SendTeamMessageRequest $request):array
     {
+        phpinfo();
         return (new MessageService($this->user(), $request))->sendTeamMessage();
     }
 

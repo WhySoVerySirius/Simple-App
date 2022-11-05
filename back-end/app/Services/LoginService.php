@@ -42,7 +42,7 @@ class LoginService
             $user = User::create((array)$data->data);
             if ($user) {
                 $tokenResponse = $this->apiTokenService->update($user);
-                return $tokenResponse;         
+                return $tokenResponse;
             }
             return ['status' => 'something went wrong'];
         }

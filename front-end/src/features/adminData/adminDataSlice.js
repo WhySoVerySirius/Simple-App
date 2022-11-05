@@ -66,7 +66,6 @@ export const adminDataReducer = createSlice({
                         key = index;
                     }
                 }
-                console.log(key);
                 state.teamData.forEach(element => {
                     if (current(element).team_id === action.payload.team_id) {
                         filtered = [...current(element).projects.filter(project => project.project_id !== action.payload.project_id)];
@@ -75,8 +74,6 @@ export const adminDataReducer = createSlice({
                 let data = [...state.teamData];
                 data[key] = filtered;
                 state.teamData = [...data];
-                console.log(current(state.teamData));
-                console.log(filtered);
             })
     },
 });
